@@ -3,3 +3,7 @@
 ##  Ensimmäinen viikko ##
 
 Ensimmäisellä viikolla oli ainoastaan tehtävien palautus **komentorivin**, **Gitin** ja **GitHub:in** käytöstä
+
+[Gitlog.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+
+[Komentorivi.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
