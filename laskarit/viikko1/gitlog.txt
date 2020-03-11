@@ -1,0 +1,35 @@
+Aloitin kotona, ja jatkoin toisella koneella kohdasta Git add -p. Toivottavasti alla oleva kelpaa. Pystyn tarvittaessa toimittamaan myös aiemmat muutaman tiedoston lisäykset
+
+
+git log --stat | cat
+commit b13eeaac1618358c7a02cbadb9ab2a912abcf217
+Author: Juho Pouttu <Juho.Pouttu@yit.fi>
+Date:   Wed Mar 11 15:26:30 2020 +0200
+
+    muutokstia
+
+ hakemisto/file2.txt                 | 0
+ hakemisto/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 794dd9dad8f683756582e5ab001effce7ced9427
+Author: Juho Pouttu <Juho.Pouttu@yit.fi>
+Date:   Wed Mar 11 15:23:35 2020 +0200
+
+    lisättiin tiedostoja
+
+ hakemisto/file1.txt | 0
+ hakemisto/file2.txt | 0
+ hakemisto/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit e64e45d0f0e37b9b01f4102949acce66ea904d0d
+Author: Juho Pouttu <Juho.Pouttu@yit.fi>
+Date:   Wed Mar 11 15:14:46 2020 +0200
+
+    Lisättiin tekstiä
+
+ eka.txt    | 3 +++
+ kolmas.txt | 3 +++
+ 2 files changed, 6 insertions(+)
+
