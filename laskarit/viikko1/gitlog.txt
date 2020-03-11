@@ -1,4 +1,4 @@
-Aloitin kotona, ja jatkoin toisella koneella kohdasta Git add -p. Toivottavasti alla oleva kelpaa. Pystyn tarvittaessa toimittamaan myös aiemmat muutaman tiedoston lisäykset
+Aloitin kotona, ja jatkoin toisella koneella kohdasta Git add -p. Toivottavasti alla oleva kelpaa. Pystyn tarvittaessa toimittamaan myös aiemmat muutaman tiedoston lisäykset. 
 
 
 git log --stat | cat
