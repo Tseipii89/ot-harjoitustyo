@@ -27,13 +27,6 @@ public class MaksukorttiTest {
     public void setUp() {
         kortti = new Maksukortti(10);
     }
-
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-     @Test
-     public void hello() {}
      
      @Test
      public void konstuktoriAsettaaSaldonOikein() {        
@@ -54,8 +47,18 @@ public class MaksukorttiTest {
          assertEquals("Kortilla on rahaa 6.0 euroa" ,kortti.toString());
      }
      
-     @Test
+    @Test
     public void syoEdullisestiEiVieSaldoaNegatiiviseksi() {
+        kortti.syoEdullisesti();
+        kortti.syoMaukkaasti();
+        // nyt kortin saldo on 3.5
+        kortti.syoMaukkaasti();
+
+        assertThat(kortti.toString(), is("Kortilla on rahaa 3.5 euroa"));
+    }
+    
+    @Test
+    public void syoMaukkaastiEiVieSaldoaNegatiiviseksi() {
         kortti.syoMaukkaasti();
         kortti.syoMaukkaasti();
         // nyt kortin saldo on 2
@@ -65,9 +68,36 @@ public class MaksukorttiTest {
     }
     
     @Test
+    public void edullisenLounaanOstoSaldoaJuuriEdulliseen() {
+        
+        Maksukortti edullinenKortti = new Maksukortti(2.5);
+        edullinenKortti.syoEdullisesti();
+        
+        assertThat(edullinenKortti.toString(), is("Kortilla on rahaa 0.0 euroa"));
+        
+    }
+    
+        @Test
+    public void MaukkaanLounaanOstoSaldoaJuuriMaukkaaseen() {
+        
+        Maksukortti maukasKortti = new Maksukortti(4);
+        maukasKortti.syoMaukkaasti();
+        
+        assertThat(maukasKortti.toString(), is("Kortilla on rahaa 0.0 euroa"));
+        
+    }
+    
+    
+    @Test
     public void kortilleVoiLadataRahaa() {
         kortti.lataaRahaa(25);
         assertEquals("Kortilla on rahaa 35.0 euroa", kortti.toString());
+    }
+    
+    @Test
+    public void negatiivisenSummanLataaminenEiMuutaKortinSaldoa() {
+        kortti.lataaRahaa(-5);
+        assertThat(kortti.toString(), is("Kortilla on rahaa 10.0 euroa"));
     }
 
     @Test
