@@ -11,3 +11,9 @@ Laitetaan nämä epäsynkkään!
 [Gitlog.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 [Komentorivi.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+
+##  Toinen viikko ##
+
+Tokalla viikolla harjoiteltiin Maven ja erityisesti JUNIT testien käyttöä. Alla harjoitusten lopputulema.
+
+[Testikattavuuskuva](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.JPG)
