@@ -7,12 +7,12 @@
 ### Viikko 2 Tehtävät asiat ###
 
 * Alustavan tiedon keräys
-..* <https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/arkkitehtuuri.md> tutustminen
-..* <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/java.md> lukeminen
-..* <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/materiaali.md#riippuvuuksien-injektointi> kertaaminen
-..* <https://materiaalit.github.io/ohjelmointi-s17/part11/> JavaFX kertaaminen
+   * <https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/arkkitehtuuri.md> tutustminen
+   * <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/java.md> lukeminen
+   * <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/materiaali.md#riippuvuuksien-injektointi> kertaaminen
+   * <https://materiaalit.github.io/ohjelmointi-s17/part11/> JavaFX kertaaminen
 * Aiheen valinta
-..* <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/tyon_aloitus.md> Valinta ohjeet
+   * <https://github.com/mluukkai/ohjelmistotekniikka-kevat-2020/blob/master/web/tyon_aloitus.md> Valinta ohjeet
 * Vaatimusmäärittelyn kirjoittaminen
 
 ##  Ensimmäinen viikko ##
