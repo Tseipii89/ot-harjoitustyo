@@ -2,5 +2,5 @@
 
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
-| 21.3. | 0.5    | Aiheen valinta |
-| yht   | 0.5   | | 
+| 21.3. | 1.5    | Tehtävän antoon & taustatietoihin tutustuminen |
+| yht   | 1.5   | | 
