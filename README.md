@@ -3,6 +3,7 @@
 ## Harjoitustyö ##
 
 [Tuntikirjanpito](/dokumentointi/tuntikirjanpito.md)
+
 [Vaatimusmäärittely](/dokumentointi/vaatimusmaarittely.md)
 
 ### Viikko 2 Tehtävät asiat ###
