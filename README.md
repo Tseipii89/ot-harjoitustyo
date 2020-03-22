@@ -8,7 +8,7 @@
 
 * ~Alustavan tiedon keräys~
 * ~Aiheen valinta~
-* Vaatimusmäärittelyn kirjoittaminen
+* ~Vaatimusmäärittelyn kirjoittaminen~
 
 ## Harjoitustehtävät ##
 
