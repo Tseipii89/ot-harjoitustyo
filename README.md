@@ -32,7 +32,7 @@ Tokalla viikolla harjoiteltiin Maven ja erityisesti JUNIT testien käyttöä. Al
 
 [Testikattavuuskuva](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.JPG)
 
-###  Toinen viikko ###
+###  Kolmas viikko ###
 
 [Tehtävä 1](/laskarit/viikko3/Tehtävä1.JPG)
 
