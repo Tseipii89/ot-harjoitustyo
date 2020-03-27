@@ -1,4 +1,4 @@
-# Tämä on ohjelmistotekniikan -kurssia varten oleva GIT -repo #
+# FlappyBird #
 
 ## Harjoitustyö ##
 
@@ -12,32 +12,19 @@
 * ~Aiheen valinta~
 * ~Vaatimusmäärittelyn kirjoittaminen~
 
-## Harjoitustehtävät ##
+### Viikko 3 Tehtävät asiat ###
 
-###  Ensimmäinen viikko ###
-
-Ensimmäisellä viikolla oli ainoastaan tehtävien palautus **komentorivin**, **Gitin** ja **GitHub:in** käytöstä
-
-Tämä on se jokin muutos, joka 1. viikon laskareissa pyydettiin.
-
-Laitetaan nämä epäsynkkään!
-
-[Gitlog.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-[Komentorivi.txt](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-###  Toinen viikko ###
-
-Tokalla viikolla harjoiteltiin Maven ja erityisesti JUNIT testien käyttöä. Alla harjoitusten lopputulema.
-
-[Testikattavuuskuva](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.JPG)
-
-###  Kolmas viikko ###
-
-[Tehtävä 1](/laskarit/viikko3/Tehtävä1.JPG)
-
-[Tehtävä 2](/laskarit/viikko3/Tehtävä2.jpg)
-
-[Tehtävä 3](/laskarit/viikko3/Tehtävä3.png)
-
-[Tehtävä 4](/laskarit/viikko3/Tehtävä4.png)
+* Repostitorion juuresta löytyy Maven-projekti
+* Projektin koodin pystyy suorittamaan NetBeansin vihreällä napilla tai/ja komennolla mvn compile exec:java -Dexec.mainClass=pakkaus.Paaohjelma
+   * Projektin koodin suorittamisesta ohje README:hin
+   * Linkkit TravisCI:hin suorittamisen onnistumisen varmistamiseksi
+* Projekti toteuttaa ainakin osan jostain viikolla 2 tekemäsi määrittelydokumentin toiminnallisuudesta <-- Kirjoitan tämän myöhemmin, kun olen ensin selvittänyt arkkitehtuurikuvan
+* Sovelluksella on oltava vähintään yksi testi jonka voi suorittaa komennolla mvn test <-- Määritän tämän arkkitehtuurikuvan jälkeen
+* Sovellukselle tulee pystyä generoimaan testikattavuusraportti komennolla mvn test jacoco:report
+   * Lisää jacoco badge githubiin
+* README kunnossa
+   * Arkkitehtuurikuvaus
+   * README:hin kuvaus Flappybirdistä.
+   * ~Linkit laskareihin poistettu~
+* Repositorio siisti
+   * .gitignore kunnosa: ei ylimääräistä tavaraa (mm. hakemistoa target/ tai tietokantatiedostoja)
