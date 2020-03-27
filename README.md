@@ -2,9 +2,11 @@
 
 ## Harjoitustyö ##
 
-[Tuntikirjanpito](/dokumentointi/tuntikirjanpito.md)
+[Hours Sheet](/dokumentointi/hourSheet.md)
 
-[Vaatimusmäärittely](/dokumentointi/vaatimusmaarittely.md)
+[Requirements analysis](/dokumentointi/vaatimusmaarittely.md)
+
+[Architecture Definition](/dokumentointi/architectureDefinition.md)
 
 ### Viikko 2 Tehtävät asiat ###
 
@@ -23,7 +25,7 @@
 * Sovellukselle tulee pystyä generoimaan testikattavuusraportti komennolla mvn test jacoco:report
    * Lisää jacoco badge githubiin
 * README kunnossa
-   * Arkkitehtuurikuvaus
+   * ~Arkkitehtuurikuvaus~
    * README:hin kuvaus Flappybirdistä.
    * ~Linkit laskareihin poistettu~
 * Repositorio siisti
