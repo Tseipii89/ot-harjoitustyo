@@ -1,12 +1,12 @@
 # Architecture definition
 
-## Structure
+## Structure (WIP)
 
 Application follows [Three-tier](https://en.wikipedia.org/wiki/Multitier_architecture) architecture and the structure (and classes) are as follows:
 
 <img src="/images/Layer-architecture.png" width="160">
 
-Package _flappyBird.ui_ handles the interface using Swing library
+Package _flappyBird.ui_ handles the interface using JavaFX 
 
 _flappyBird.domain_ handles the app logic 
 
