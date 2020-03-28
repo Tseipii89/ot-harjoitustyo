@@ -58,27 +58,37 @@ public class Render extends Application {
             });
 
         
-
-        final long startNanoTime = System.nanoTime();
-        new AnimationTimer()
-        {
-        @Override
-        public void handle(long currentNanoTime)
+        
+            final long startNanoTime = System.nanoTime();
+            new AnimationTimer()
             {
-                     
-                int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
+            @Override
+            public void handle(long currentNanoTime)
+                {
+                    if(gameMotor.isRunning) {
+                        int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
 
-                if(input.contains("UP")){
-                    gameMotor.GAMEBIRD.birdJump();
+                        if(input.contains("UP")){
+                            gameMotor.birdJump();
+                        }
+                        gameMotor.GAMEBIRD.update(time);
+
+                        // update bird location
+                        graphicsContext.drawImage( gameMotor.background, 0, 0 );
+
+                        gameMotor.GAMEBIRD.render(graphicsContext);
+                        gameMotor.checkIfGameOn();
+                   } else {
+                        gameWindow.setTitle("Try again");
+                   }
+                   
                 }
-                gameMotor.GAMEBIRD.BirdNewPosition(time);
+            }.start();
+            gameWindow.show();
+        
+        
+        
 
-                // update bird location
-                graphicsContext.drawImage( gameMotor.background, 0, 0 );
-                graphicsContext.drawImage( gameMotor.GAMEBIRD.flappyBirdImg, gameMotor.GAMEBIRD.X, gameMotor.GAMEBIRD.Y );
-            }
-        }.start();
-        gameWindow.show();
         
         
         

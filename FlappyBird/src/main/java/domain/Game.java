@@ -3,6 +3,7 @@ package domain;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 
 
@@ -25,8 +26,25 @@ public class Game {
     }
     
 
-    
-    public void changeGameStatus() {
-        isRunning = !isRunning;
+    public void checkIfGameOn() {
+        Rectangle2D birdRect = this.GAMEBIRD.getBoundary();
+        // check if bird has hit the bottom
+        if(birdRect.getMaxY()+15 > Game.HEIGHT) {
+            this.isRunning = false;
+        }
+    }
+
+    public boolean birdNotOutOfField() {
+        Rectangle2D birdRect = this.GAMEBIRD.getBoundary();
+        if(birdRect.getMaxY()+15 > Game.HEIGHT) {
+            return false;
+        }
+        return birdRect.getMinY()-15 >= 0;
+    }
+
+    public void birdJump() {
+        if(this.birdNotOutOfField()) {
+            this.GAMEBIRD.birdJump();
+        }
     }
 }
