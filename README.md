@@ -32,9 +32,8 @@ Then use your terminal to navigate to the root of the just cloned program and ru
    * ~Lintu hyppii ruudulla ylöspäin, kun klikkaa ylöspäin nuolta.~ 
    * ~Lintu voi tippua alareunan läpi.~ 
    * ~Lintu ei mene yläreunana yli.~
-* Sovelluksella on oltava vähintään yksi testi jonka voi suorittaa komennolla mvn test <-- Testit yllä olevalle toiminnallisuudelle.
-* Sovellukselle tulee pystyä generoimaan testikattavuusraportti komennolla mvn test jacoco:report
-   * Lisää jacoco badge githubiin
+* ~Sovelluksella on oltava vähintään yksi testi jonka voi suorittaa komennolla mvn test~
+* ~Sovellukselle tulee pystyä generoimaan testikattavuusraportti komennolla mvn test jacoco:report~
 * ~README kunnossa~
    * ~Arkkitehtuurikuvausksen raakaversio, joka elää~
    * ~README:hin kuvaus Flappybirdistä.~
