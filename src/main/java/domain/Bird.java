@@ -22,6 +22,15 @@ public class Bird implements Sprite {
         this.width = img.getHeight();
     }
     
+    public Bird(int height, int width) {
+        this.flappyBirdImg = null;
+        this.X = width/2 -200;
+        this.Y = height/2-15;
+        this.motionY = 0;
+        this.width = 20;
+        this.width = 20;
+    }
+    
    
 
     @Override
