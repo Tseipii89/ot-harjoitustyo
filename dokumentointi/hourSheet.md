@@ -10,4 +10,5 @@
 | 28.3. | 1    | Tutustuminen JavaFX:ään |
 | 28.3. | 4    | FlappyBirdin ensi askeleet hyppimisen tiellä |
 | 28.3. | 1   | Refaktorointia ja törmäyksen määrittelyä ylä- ja alapalkkiin |
-| yht   | 14.5 | | 
+| 29.3. | 0.5  | Mavenin lisääminen |
+| yht   | 15 | | 

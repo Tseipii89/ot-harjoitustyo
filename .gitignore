@@ -4,9 +4,5 @@
 /laskarit/viikko2/Unicafe/target/*
 /laskarit/viikko2/Unicafe/nbproject/
 /FlappyBird/target
-.classpath
-.project
-.settings/
-/nbproject/
-.vscode/
-nbactions.xml
+/FlappyBird/target/*
+/FlappyBird/nbactions.xml
