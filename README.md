@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Tseipii89/ot-harjoitustyo.svg?branch=master)](https://travis-ci.org/Tseipii89/ot-harjoitustyo)
+
 # FlappyBird #
 
 ## Harjoitustyö ##
@@ -14,7 +16,7 @@
 * Repostitorion juuresta löytyy Maven-projekti
 * Projektin koodin pystyy suorittamaan NetBeansin vihreällä napilla tai/ja komennolla mvn compile exec:java -Dexec.mainClass=pakkaus.Paaohjelma
    * Projektin koodin suorittamisesta ohje README:hin
-   * Linkkit TravisCI:hin suorittamisen onnistumisen varmistamiseksi
+   * ~Linkkit TravisCI:hin suorittamisen onnistumisen varmistamiseksi~
 * ~Projekti toteuttaa ainakin osan jostain viikolla 2 tekemäsi määrittelydokumentin toiminnallisuudesta~
    * ~Lintu hyppii ruudulla ylöspäin, kun klikkaa ylöspäin nuolta.~ 
    * ~Lintu voi tippua alareunan läpi.~ 
