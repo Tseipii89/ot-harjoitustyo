@@ -12,4 +12,5 @@
 | 28.3. | 1   | Refaktorointia ja törmäyksen määrittelyä ylä- ja alapalkkiin |
 | 29.3. | 0.5  | Mavenin lisääminen |
 | 29.3. | 0.5  | Repositorion siistiminen ja ohjeiden kirjoittaminen |
-| yht   | 15.5 | | 
+| 29.3. | 0.5  | Projektin kääntämisen varmistaminen laitoksen koneella etätyöpöytäyhteydellä |
+| yht   | 16 | | 

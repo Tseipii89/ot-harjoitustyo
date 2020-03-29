@@ -23,7 +23,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
-        birdie = new Image( new FileInputStream("src/main/resources/images/flappybird.png") ); 
+        birdie = new Image( "/images/flappybird.png" );
         int height = 600;
         int width = 800;
         Bird flappyBirdie = new Bird(birdie, height, width);

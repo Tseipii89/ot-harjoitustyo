@@ -22,7 +22,7 @@ public class Game {
         Game.HEIGHT = height;
         Game.WIDTH = width;
         isRunning = true;
-        Game.background = new Image( new FileInputStream("src/main/resources/images/flappybirdtausta.png") );
+        Game.background = new Image( "/images/flappybirdtausta.png" );
     }
     
 
