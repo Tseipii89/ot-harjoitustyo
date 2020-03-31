@@ -17,7 +17,7 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 
 [Hours Sheet](/dokumentointi/hourSheet.md)
 
-[Requirements analysis](/dokumentointi/vaatimusmaarittely.md)
+[Requirements analysis](/dokumentointi/Requirements.md)
 
 [Architecture Definition](/dokumentointi/architectureDefinition.md)
 
@@ -32,6 +32,7 @@ Then use your terminal to navigate to the root of the just cloned program and ru
    * ~Lintu hyppii ruudulla ylöspäin, kun klikkaa ylöspäin nuolta.~ 
    * ~Lintu voi tippua alareunan läpi.~ 
    * ~Lintu ei mene yläreunana yli.~
+   * ~Lintua vastaan tulee putkia~
 * ~Sovelluksella on oltava vähintään yksi testi jonka voi suorittaa komennolla mvn test~
 * ~Sovellukselle tulee pystyä generoimaan testikattavuusraportti komennolla mvn test jacoco:report~
 * ~README kunnossa~
@@ -40,3 +41,19 @@ Then use your terminal to navigate to the root of the just cloned program and ru
    * ~Linkit laskareihin poistettu~
 * ~Repositorio siisti~
    * ~.gitignore kunnosa: ei ylimääräistä tavaraa (mm. hakemistoa target/ tai tietokantatiedostoja)~
+
+
+### Viikko 4 Tehtävät asiat ###
+ 
+* Ohjelma on kasvanut edellisestä viikosta
+   * Lintua vastaan tulee putkia, joiden välissä olevista raoista linnun pitää hyppiä + putkia tulee niin pitkään, kun peli jatkuu
+   * Linnun törmätessä putkeen peli loppuu
+   * Pelin alussa ja lopussa tulee teksti, jossa kerrotaan pelin säännöt. Peli käynnistyy ylöspäin nuolella
+* Testaus on edennyt
+   * Käyttöliittymän rakentava koodi jätetään pois testikattavuusraportista
+   * Sovelluksen testien rivikattavuuden tulee olla vähintään 20%
+* Checkstyle on otettu käyttöön
+   * Käyttöliittymän rakentavan koodin ei tarvitse olla Checkstyle-tarkastelun alla
+* Arkkitehtuurikuva on päivitetty vastaamaan todellisuutta
+
+

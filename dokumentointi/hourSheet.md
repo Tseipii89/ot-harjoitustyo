@@ -14,4 +14,6 @@
 | 29.3. | 0.5  | Repositorion siistiminen ja ohjeiden kirjoittaminen |
 | 29.3. | 1    | Projektin kääntämisen varmistaminen laitoksen koneella etätyöpöytäyhteydellä |
 | 29.3. | 3  | Ensimmäisen testin kirjoittaminen |
-| yht   | 19   | | 
+| 31.3. | 0.5  | Seuraavan viikon tehtävien suunnittelu |
+| 31.3. | 2.5 | Putkien koodaus |
+| yht   | 22 | | 

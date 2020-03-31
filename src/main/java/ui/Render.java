@@ -3,15 +3,19 @@ package ui;
 
 
 import domain.Game;
+import domain.Pipe;
+import static domain.Pipe.COLOR;
+import domain.Sprite;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Render extends Application {
@@ -38,6 +42,7 @@ public class Render extends Application {
         root.getChildren().add(gameCanvas);
         
         GraphicsContext graphicsContext = gameCanvas.getGraphicsContext2D();
+       
         
         ArrayList<String> input = new ArrayList<>();
         
@@ -47,15 +52,10 @@ public class Render extends Application {
             if ( !input.contains(code) )
                 input.add( code );
         });
-        theScene.setOnKeyReleased(
-          new EventHandler<KeyEvent>()
-            {
-                public void handle(KeyEvent e)
-                {
-                    String code = e.getCode().toString();
-                    input.remove( code );
-                }
-            });
+        theScene.setOnKeyReleased((KeyEvent e) -> {
+            String code = e.getCode().toString();
+            input.remove( code );
+        });
 
         
         
@@ -68,6 +68,9 @@ public class Render extends Application {
                     if(gameMotor.isRunning) {
                         int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
 
+                        
+
+                        
                         if(input.contains("UP")){
                             gameMotor.birdJump();
                         }
@@ -75,7 +78,15 @@ public class Render extends Application {
 
                         // update bird location
                         graphicsContext.drawImage( gameMotor.background, 0, 0 );
+                        
+                        
+                        for (Pipe pipe : gameMotor.PIPES) {
+                            pipe.update(time);
+                            graphicsContext.setFill(Color.GREEN);
+                            pipe.render(graphicsContext); 
+                        }
 
+                        
                         gameMotor.GAMEBIRD.render(graphicsContext);
                         gameMotor.checkIfGameOn();
                    } else {

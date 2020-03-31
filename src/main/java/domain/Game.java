@@ -3,6 +3,7 @@ package domain;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 
@@ -16,6 +17,7 @@ public class Game {
     public boolean isRunning;
     //No need to change the background...I hope.
     public static Image background;
+    public ArrayList<Pipe> PIPES;
     
     public Game(Bird gameBird, int height, int width ) throws FileNotFoundException {
         this.GAMEBIRD = gameBird;
@@ -23,6 +25,11 @@ public class Game {
         Game.WIDTH = width;
         isRunning = true;
         Game.background = new Image( "/images/flappybirdtausta.png" );
+        PIPES = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            createPipe(i*300);
+        }
+
     }
     
 
@@ -46,5 +53,15 @@ public class Game {
         if(this.birdNotOutOfField()) {
             this.GAMEBIRD.birdJump();
         }
+    }
+
+    private void createPipe(int whereToStart) {
+             int Y = (int) (100 + Math.random()*(Game.HEIGHT/2));
+             int X = 800 + whereToStart;
+             Pipe topPipe = new Pipe(X, 0, Y, 70, 20);
+             Pipe bottomPipe = new Pipe(X, Y+175, Game.HEIGHT-(Y+150), 70, 20);
+             PIPES.add(topPipe);
+             PIPES.add(bottomPipe);
+
     }
 }

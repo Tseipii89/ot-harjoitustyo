@@ -18,13 +18,15 @@ Players enter the username to log in to the game. This nickname is only used to 
 ### The Game
 
 - User will see the screen and will be asked to press up-arrow to start the game
-- Up-arrow will jump the bird up a little bit
+- ~Up-arrow will jump the bird up a little bit~
+   - ~The bird can't jump over the top edge of the screen~
 - The score will get higher the longer distance the user gets to
 - The screen will also show the highest score and username of the player who got it
-- The movement of the obstacles gets faster the longer the game goes on
 - There are moving obstacles with little holes that the player needs to get past
+   - The moving obstacles don't stop
 - If user hits wall, game over text will appear and the score doesn't increase anymore
    - User can start new game by pressing up-arrow. Same nickname persists.
+- ~If user hits the bottom of the screen the game ends~
 
 ## Further development ideas
 
