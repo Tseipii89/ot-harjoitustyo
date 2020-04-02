@@ -16,4 +16,7 @@
 | 29.3. | 3  | Ensimmäisen testin kirjoittaminen |
 | 31.3. | 0.5  | Seuraavan viikon tehtävien suunnittelu |
 | 31.3. | 2.5 | Putkien koodaus |
-| yht   | 22 | | 
+| 2.4. | 0.5 | Render -luokan refaktorointi |
+| 2.4. | 1 | Putkien loputon tuleminen |
+| 2.4. | 0.5 | Peli loppuu, jos lintu törmää putkeen |
+| yht   | 24 | | 

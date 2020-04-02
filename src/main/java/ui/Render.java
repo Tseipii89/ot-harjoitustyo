@@ -3,11 +3,7 @@ package ui;
 
 
 import domain.Game;
-import domain.Pipe;
-import static domain.Pipe.COLOR;
-import domain.Sprite;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -15,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Render extends Application {
@@ -69,26 +64,19 @@ public class Render extends Application {
                         int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
 
                         
+                        // updates the birds position on the screen
+                        gameMotor.updateBirdPlacement(input, time);
 
-                        
-                        if(input.contains("UP")){
-                            gameMotor.birdJump();
-                        }
-                        gameMotor.GAMEBIRD.update(time);
-
-                        // update bird location
+                        // render the background again so there isn't any "shadows" for the bird
                         graphicsContext.drawImage( gameMotor.background, 0, 0 );
                         
+                        gameMotor.drawPipes(graphicsContext, time);
                         
-                        for (Pipe pipe : gameMotor.PIPES) {
-                            pipe.update(time);
-                            graphicsContext.setFill(Color.GREEN);
-                            pipe.render(graphicsContext); 
-                        }
 
-                        
                         gameMotor.GAMEBIRD.render(graphicsContext);
                         gameMotor.checkIfGameOn();
+                        gameMotor.updatePipes();
+                        
                    } else {
                         gameWindow.setTitle("Try again");
                    }

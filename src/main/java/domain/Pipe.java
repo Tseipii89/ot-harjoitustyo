@@ -25,13 +25,14 @@ public class Pipe implements Sprite {
 
     @Override
     public void update(int time) {
-        if( time%10 == 0) {
+        if( time%1 == 0) {
             this.X -= motionX;
         }
     }
 
     @Override
     public void render(GraphicsContext gc) {
+        gc.setFill(COLOR);
         gc.fillRect(this.X, this.Y, this.width, this.height);
     }
 
@@ -42,7 +43,9 @@ public class Pipe implements Sprite {
 
     @Override
     public boolean intersects(Sprite s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     
+        return s.getBoundary().intersects(this.getBoundary());
+        
     }
     
 }

@@ -46,8 +46,8 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 ### Viikko 4 Tehtävät asiat ###
  
 * Ohjelma on kasvanut edellisestä viikosta
-   * Lintua vastaan tulee putkia, joiden välissä olevista raoista linnun pitää hyppiä + putkia tulee niin pitkään, kun peli jatkuu
-   * Linnun törmätessä putkeen peli loppuu
+   * ~Lintua vastaan tulee putkia, joiden välissä olevista raoista linnun pitää hyppiä + putkia tulee niin pitkään, kun peli jatkuu~
+   * ~Linnun törmätessä putkeen peli loppuu~
    * Pelin alussa ja lopussa tulee teksti, jossa kerrotaan pelin säännöt. Peli käynnistyy ylöspäin nuolella
 * Testaus on edennyt
    * Käyttöliittymän rakentava koodi jätetään pois testikattavuusraportista

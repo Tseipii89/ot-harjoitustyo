@@ -35,8 +35,8 @@ public class Bird implements Sprite {
 
     @Override
     public void update(int time) {
-        if( time%10 == 0) {
-            motionY = motionY + 2;
+        if( time%5 == 0) {
+            motionY = motionY + 1;
         }
         
         this.Y += this.motionY;
@@ -62,7 +62,8 @@ public class Bird implements Sprite {
 
     @Override
     public boolean intersects(Sprite s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return s.getBoundary().intersects(this.getBoundary());
+        
     }
     
     
