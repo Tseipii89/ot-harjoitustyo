@@ -39,7 +39,7 @@ public class Render extends Application {
         Scene theScene = new Scene(root);
         gameWindow.setScene(theScene);
                        
-        Canvas gameCanvas = new Canvas(gameMotor.WIDTH, gameMotor.HEIGHT);
+        Canvas gameCanvas = new Canvas(gameMotor.width, gameMotor.height);
         root.getChildren().add(gameCanvas);
         
         this.graphicsContext = gameCanvas.getGraphicsContext2D();
@@ -82,7 +82,7 @@ public class Render extends Application {
                 // render the background again so there isn't any "shadows" for the bird
                 graphicsContext.drawImage( Render.background, 0, 0 );
                 gameMotor.drawPipes(graphicsContext, time);
-                gameMotor.GAMEBIRD.render(graphicsContext);
+                gameMotor.gameBird.render(graphicsContext);
                 gameMotor.checkIfGameOn();
                 gameMotor.updatePipes();
             } 

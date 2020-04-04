@@ -12,90 +12,90 @@ import javafx.scene.image.Image;
 public final class Game {
 
     //these will be the final dimensions of the game. Maybe I'll make them modifiable for player.
-    public static int HEIGHT;
-    public static int WIDTH;
-    public Bird GAMEBIRD;
+    public static int height;
+    public static int width;
+    public Bird gameBird;
     public boolean isRunning;
     //No need to change the background...I hope.
-    public ArrayList<Pipe> PIPES;
+    public ArrayList<Pipe> pipes;
     public int spaceBetweenPipes;
     public int widthOfPipe;
     
-    public Game(Bird gameBird, int height, int width ) throws FileNotFoundException {
-        this.GAMEBIRD = gameBird;
-        Game.HEIGHT = height;
-        Game.WIDTH = width;
+    public Game(Bird gameBird, int height, int width) throws FileNotFoundException {
+        this.gameBird = gameBird;
+        Game.height = height;
+        Game.width = width;
         isRunning = false;
         spaceBetweenPipes = 300;
         widthOfPipe = 70;
-        PIPES = new ArrayList<>();
+        pipes = new ArrayList<>();
         this.startGameAddPipes();
     }
     
-    public Game(Bird gameBird ) {
-        this.GAMEBIRD = gameBird;
-        Game.HEIGHT = 600;
-        Game.WIDTH = 800;
+    public Game(Bird gameBird) {
+        this.gameBird = gameBird;
+        Game.height = 600;
+        Game.width = 800;
         isRunning = false;
         spaceBetweenPipes = 300;
         widthOfPipe = 70;
-        PIPES = new ArrayList<>();
+        pipes = new ArrayList<>();
         this.startGameAddPipes();
     }
     
     public void startGameAddPipes() {
         for (int i = 0; i < 4; i++) {
-            createPipe(i*(widthOfPipe+spaceBetweenPipes));
+            createPipe(i * (widthOfPipe + spaceBetweenPipes));
         }
     }
 
     public void checkIfGameOn() {
-        Rectangle2D birdRect = this.GAMEBIRD.getBoundary();
+        Rectangle2D birdRect = this.gameBird.getBoundary();
         // check if bird has hit the bottom
-        if(birdRect.getMaxY()+15 > Game.HEIGHT) {
+        if (birdRect.getMaxY() + 15 > Game.height) {
             this.isRunning = false;
         }
-        PIPES.stream().filter((pipe) -> (pipe.intersects(this.GAMEBIRD))).forEachOrdered((_item) -> {
+        pipes.stream().filter((pipe) -> (pipe.intersects(this.gameBird))).forEachOrdered((item) -> {
             this.isRunning = false;
         });
     }
 
     public boolean birdNotOutOfField() {
-        Rectangle2D birdRect = this.GAMEBIRD.getBoundary();
-        if(birdRect.getMaxY()+15 > Game.HEIGHT) {
+        Rectangle2D birdRect = this.gameBird.getBoundary();
+        if (birdRect.getMaxY() + 15 > Game.height) {
             return false;
         }
-        return birdRect.getMinY()-15 >= 0;
+        return birdRect.getMinY() - 15 >= 0;
     }
 
     public void birdJump() {
-        if(this.birdNotOutOfField()) {
-            this.GAMEBIRD.birdJump();
+        if (this.birdNotOutOfField()) {
+            this.gameBird.birdJump();
         }
     }
 
     // Creates the top and bottom half of the pipe
     private void createPipe(int whereToStart) {
-             int Y = (int) (100 + Math.random()*(Game.HEIGHT/2));
-             int X = 800 + whereToStart;
-             Pipe topPipe = new Pipe(X, 0, Y, widthOfPipe, 2);
-             Pipe bottomPipe = new Pipe(X, Y+175, Game.HEIGHT-(Y+150), widthOfPipe, 2);
-             PIPES.add(topPipe);
-             PIPES.add(bottomPipe);
+        int positionY = (int) (100 + Math.random() * (Game.height / 2));
+        int positionX = 800 + whereToStart;
+        Pipe topPipe = new Pipe(positionX, 0, positionY, widthOfPipe, 2);
+        Pipe bottomPipe = new Pipe(positionX, positionY + 175, Game.height - (positionY + 150), widthOfPipe, 2);
+        pipes.add(topPipe);
+        pipes.add(bottomPipe);
 
     }
 
 
     public void updateBirdPlacement(ArrayList<String> input, int time) {
-        if(input.contains("UP")){
-           this.birdJump();
+        if (input.contains("UP")) {
+            this.birdJump();
         }
-        this.GAMEBIRD.update(time);
+        this.gameBird.update(time);
     }
 
     public void drawPipes(GraphicsContext graphicsContext, int time) {
     
-        for (Pipe pipe : this.PIPES) {
+        for (Pipe pipe : this.pipes) {
             pipe.update(time);
             pipe.render(graphicsContext); 
         }
@@ -104,9 +104,9 @@ public final class Game {
 
     public void updatePipes() {
     
-        for (Pipe pipe : this.PIPES) {
-            if(pipe.X+pipe.width<0) {
-                pipe.X = 4*(widthOfPipe+spaceBetweenPipes)-widthOfPipe;
+        for (Pipe pipe : this.pipes) {
+            if (pipe.positionX + pipe.width < 0) {
+                pipe.positionX = 4 * (widthOfPipe + spaceBetweenPipes) - widthOfPipe;
             }
         }
 
@@ -115,11 +115,11 @@ public final class Game {
     }
 
     public void reset() {
-        this.PIPES.clear();
+        this.pipes.clear();
         this.startGameAddPipes();
         
-        this.GAMEBIRD.X = WIDTH /2 -200;
-        this.GAMEBIRD.Y = HEIGHT /2 -15;
+        this.gameBird.positionX = width / 2 - 200;
+        this.gameBird.positionY = height / 2 - 15;
         
     }
 }

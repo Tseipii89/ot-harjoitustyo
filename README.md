@@ -10,8 +10,13 @@ FlappyBird is a game where you try to fly through pipes with a bouncing bird. Th
 
 Do a normal clone of the git repo to your wanted folder (the command is "git clone git@github.com:Tseipii89/ot-harjoitustyo.git").
 
-Then use your terminal to navigate to the root of the just cloned program and run mvn compile exec:java -Dexec.mainClass=Main
+Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=Main"
 
+### Test and Style ###
+
+You can generate the jacoco report with command "mvn jacoco:report". You find this document under *target/site/jacoco/index.html* OR you can just run the rest with command "mvn test"
+
+You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:checkstyle". You find this document under *target/site/checkstyle.html*
 
 ## School project ##
 
@@ -49,11 +54,9 @@ Then use your terminal to navigate to the root of the just cloned program and ru
    * ~Lintua vastaan tulee putkia, joiden välissä olevista raoista linnun pitää hyppiä + putkia tulee niin pitkään, kun peli jatkuu~
    * ~Linnun törmätessä putkeen peli loppuu~
    * ~Pelin alussa ja lopussa tulee teksti, jossa kerrotaan pelin alkavan ylöspäin nuolen klikkaamisella. Peli käynnistyy ylöspäin nuolella~
-* Testaus on edennyt
+* ~Testaus on edennyt~
    * ~Käyttöliittymän rakentava koodi jätetään pois testikattavuusraportista~
-   * Sovelluksen testien rivikattavuuden tulee olla vähintään 20%
-* Checkstyle on otettu käyttöön
-   * Käyttöliittymän rakentavan koodin ei tarvitse olla Checkstyle-tarkastelun alla
+   * ~Sovelluksen testien rivikattavuuden tulee olla vähintään 20%~
+* ~Checkstyle on otettu käyttöön~
+   * ~Käyttöliittymän rakentavan koodin ei tarvitse olla Checkstyle-tarkastelun alla~
 * Arkkitehtuurikuva on päivitetty vastaamaan todellisuutta
-
-

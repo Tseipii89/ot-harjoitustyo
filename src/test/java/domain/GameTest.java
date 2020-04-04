@@ -30,7 +30,7 @@ public class GameTest {
     @Test
     public void startGameAddsRightAmountOfPipes() {
         //There should be 4 top pipes and 4 lower pipes at the beginning
-        assertThat(testGame.PIPES.size(), is(8));
+        assertThat(testGame.pipes.size(), is(8));
     }
 
 }
