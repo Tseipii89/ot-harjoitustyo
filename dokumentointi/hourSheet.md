@@ -20,4 +20,5 @@
 | 2.4. | 1 | Putkien loputon tuleminen |
 | 2.4. | 0.5 | Peli loppuu, jos lintu törmää putkeen |
 | 4.4. | 1.5 | Toisen ruudun teko, jossa kerrotaan ylöspäin nuolen aloittavan pelin|
-| yht   | 25 | | 
+| 4.4. | 0.5 | Game testiluokan ensimmäisten testien kirjaaminen (+ yli 30% testien rivikattavuus)|
+| yht   | 25.5 | | 

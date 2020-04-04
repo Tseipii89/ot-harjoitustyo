@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,11 +22,13 @@ public class Render extends Application {
     private GraphicsContext graphicsContext;
     private final ArrayList<String> input;
     private static Game gameMotor;
+    public static Image background;
     
     public Render(Game gameMotor) {
         this.root = new Group();
         this.input = new ArrayList<>();
         Render.gameMotor = gameMotor;
+        Render.background = new Image( "/images/flappybirdtausta.png" );
     }
 
     @Override
@@ -77,7 +80,7 @@ public class Render extends Application {
                 // updates the birds position on the screen
                 gameMotor.updateBirdPlacement(input, time);
                 // render the background again so there isn't any "shadows" for the bird
-                graphicsContext.drawImage( gameMotor.background, 0, 0 );
+                graphicsContext.drawImage( Render.background, 0, 0 );
                 gameMotor.drawPipes(graphicsContext, time);
                 gameMotor.GAMEBIRD.render(graphicsContext);
                 gameMotor.checkIfGameOn();

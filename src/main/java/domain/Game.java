@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 
-public class Game {
+public final class Game {
 
     //these will be the final dimensions of the game. Maybe I'll make them modifiable for player.
     public static int HEIGHT;
@@ -17,7 +17,6 @@ public class Game {
     public Bird GAMEBIRD;
     public boolean isRunning;
     //No need to change the background...I hope.
-    public static Image background;
     public ArrayList<Pipe> PIPES;
     public int spaceBetweenPipes;
     public int widthOfPipe;
@@ -27,14 +26,24 @@ public class Game {
         Game.HEIGHT = height;
         Game.WIDTH = width;
         isRunning = false;
-        Game.background = new Image( "/images/flappybirdtausta.png" );
         spaceBetweenPipes = 300;
         widthOfPipe = 70;
         PIPES = new ArrayList<>();
         this.startGameAddPipes();
     }
     
-    private void startGameAddPipes() {
+    public Game(Bird gameBird ) {
+        this.GAMEBIRD = gameBird;
+        Game.HEIGHT = 600;
+        Game.WIDTH = 800;
+        isRunning = false;
+        spaceBetweenPipes = 300;
+        widthOfPipe = 70;
+        PIPES = new ArrayList<>();
+        this.startGameAddPipes();
+    }
+    
+    public void startGameAddPipes() {
         for (int i = 0; i < 4; i++) {
             createPipe(i*(widthOfPipe+spaceBetweenPipes));
         }
@@ -46,11 +55,9 @@ public class Game {
         if(birdRect.getMaxY()+15 > Game.HEIGHT) {
             this.isRunning = false;
         }
-        for (Pipe pipe : PIPES) {
-            if(pipe.intersects(this.GAMEBIRD)) {
-                this.isRunning = false;
-            }
-        }
+        PIPES.stream().filter((pipe) -> (pipe.intersects(this.GAMEBIRD))).forEachOrdered((_item) -> {
+            this.isRunning = false;
+        });
     }
 
     public boolean birdNotOutOfField() {
