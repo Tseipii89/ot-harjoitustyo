@@ -48,7 +48,7 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 * Ohjelma on kasvanut edellisestä viikosta
    * ~Lintua vastaan tulee putkia, joiden välissä olevista raoista linnun pitää hyppiä + putkia tulee niin pitkään, kun peli jatkuu~
    * ~Linnun törmätessä putkeen peli loppuu~
-   * Pelin alussa ja lopussa tulee teksti, jossa kerrotaan pelin säännöt. Peli käynnistyy ylöspäin nuolella
+   * ~Pelin alussa ja lopussa tulee teksti, jossa kerrotaan pelin alkavan ylöspäin nuolen klikkaamisella. Peli käynnistyy ylöspäin nuolella~
 * Testaus on edennyt
    * Käyttöliittymän rakentava koodi jätetään pois testikattavuusraportista
    * Sovelluksen testien rivikattavuuden tulee olla vähintään 20%

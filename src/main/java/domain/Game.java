@@ -26,17 +26,19 @@ public class Game {
         this.GAMEBIRD = gameBird;
         Game.HEIGHT = height;
         Game.WIDTH = width;
-        isRunning = true;
+        isRunning = false;
         Game.background = new Image( "/images/flappybirdtausta.png" );
         spaceBetweenPipes = 300;
         widthOfPipe = 70;
         PIPES = new ArrayList<>();
+        this.startGameAddPipes();
+    }
+    
+    private void startGameAddPipes() {
         for (int i = 0; i < 4; i++) {
             createPipe(i*(widthOfPipe+spaceBetweenPipes));
         }
-
     }
-    
 
     public void checkIfGameOn() {
         Rectangle2D birdRect = this.GAMEBIRD.getBoundary();
@@ -103,5 +105,14 @@ public class Game {
 
         
     
+    }
+
+    public void reset() {
+        this.PIPES.clear();
+        this.startGameAddPipes();
+        
+        this.GAMEBIRD.X = WIDTH /2 -200;
+        this.GAMEBIRD.Y = HEIGHT /2 -15;
+        
     }
 }
