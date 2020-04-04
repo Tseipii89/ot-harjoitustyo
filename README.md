@@ -59,4 +59,4 @@ You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:ch
    * ~Sovelluksen testien rivikattavuuden tulee olla vähintään 20%~
 * ~Checkstyle on otettu käyttöön~
    * ~Käyttöliittymän rakentavan koodin ei tarvitse olla Checkstyle-tarkastelun alla~
-* Arkkitehtuurikuva on päivitetty vastaamaan todellisuutta
+* ~Arkkitehtuurikuva on päivitetty vastaamaan todellisuutta~
