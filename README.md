@@ -60,3 +60,21 @@ You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:ch
 * ~Checkstyle on otettu käyttöön~
    * ~Käyttöliittymän rakentavan koodin ei tarvitse olla Checkstyle-tarkastelun alla~
 * ~Arkkitehtuurikuva on päivitetty vastaamaan todellisuutta~
+
+### Viikko 5 Tehtävät asiat ###
+ 
+* Ohjelmasta pystyy tekemään suorituskelpoisen jar-tiedoston komennolla mvn package
+* Projektista on tehty github release
+   * Release sisältää ohjelman uusimman version suorituskelpoisen jar-tiedoston
+   * Releaseen on linkki projektin README:stä
+* Ohjelma on kasvanut edellisestä viikosta
+   * Pelaajan pisteet näkyvät yläreunassa
+   * Pelaajalle näkyy aloitusruutu, johon syötetään nimimerkki (väh. 3 merkkiä pitkä).
+   * Nimimerkki näkyy myös pelin yläreunassa
+   * Pelaajan nimimerkki säilyy kuoleman yli
+* Sovelluksen testien rivikattavuuden tulee olla vähintään 40%
+   * Main on otettu pois testeistä
+* Checkstylestä on alle 5 virhettä
+* Ohjelman dokumentaatiossa on ainakin yksi sen jotain oleellista toiminnallisuutta kuvaava sekvenssikaavio
+* Luokkien tehtävien kuvauksia ja perusteita on avattu arkkitehtuurikuvaksessa
+* Palautusrepositorioosi voi tehdä GitHub-issuieta
