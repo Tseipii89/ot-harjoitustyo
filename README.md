@@ -12,6 +12,8 @@ Do a normal clone of the git repo to your wanted folder (the command is "git clo
 
 Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=Main"
 
+You can also create a JAR file via command "mvn package". This file can be found at *target/FlappyBird-1.0-SNAPSHOT.jar*
+
 ### Test and Style ###
 
 You can generate the jacoco report with command "mvn jacoco:report". You find this document under *target/site/jacoco/index.html* OR you can just run the rest with command "mvn test"
