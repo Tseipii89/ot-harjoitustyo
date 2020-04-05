@@ -1,12 +1,14 @@
 
 package domain;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import ui.Render;
 
 
 public final class Game {
@@ -20,7 +22,7 @@ public final class Game {
     public ArrayList<Pipe> pipes;
     public int spaceBetweenPipes;
     public int widthOfPipe;
-    
+       
     public Game(Bird gameBird, int height, int width) throws FileNotFoundException {
         this.gameBird = gameBird;
         Game.height = height;
