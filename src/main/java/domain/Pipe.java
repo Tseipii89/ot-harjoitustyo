@@ -13,13 +13,17 @@ public class Pipe implements Sprite {
     public int width;
     public int motionX;
     public final static Color COLOR = Color.GREEN;
+    public boolean scored;
+    public boolean topPipe;
     
-    public Pipe(int positionX, int positionY, int height, int width, int motionX) {
+    public Pipe(int positionX, int positionY, int height, int width, int motionX, boolean top) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;
         this.height = height;
         this.motionX = motionX;
+        this.scored = false;
+        this.topPipe = top;
     }
 
 

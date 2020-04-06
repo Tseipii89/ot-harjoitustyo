@@ -23,4 +23,7 @@
 | 4.4. | 0.5 | Game testiluokan ensimmäisten testien kirjaaminen (+ yli 30% testien rivikattavuus)|
 | 4.4. | 0.5 | Checkstylen lisääminen ja render luokan ohittaminen |
 | 4.4. | 0.5 | Checkstyle virheiden korjaaminen ja arkkitehtuurikuvan päivittäminen |
-| yht   | 26.5 | | 
+| 5.4. | 0.5 | Jar paketin luomisen mahdollistaminen |
+| 6.4. | 0.5 | Pisteiden lasku toiminnallisuus |
+| 6.4. | 2 | Aloitusruudun teko|
+| yht   | 29.5 | | 

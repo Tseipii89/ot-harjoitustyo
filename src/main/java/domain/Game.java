@@ -22,6 +22,8 @@ public final class Game {
     public ArrayList<Pipe> pipes;
     public int spaceBetweenPipes;
     public int widthOfPipe;
+    public int score;
+    public String username;
        
     public Game(Bird gameBird, int height, int width) throws FileNotFoundException {
         this.gameBird = gameBird;
@@ -32,6 +34,8 @@ public final class Game {
         widthOfPipe = 70;
         pipes = new ArrayList<>();
         this.startGameAddPipes();
+        this.score = 0;
+        username = "";
     }
     
     public Game(Bird gameBird) {
@@ -43,6 +47,8 @@ public final class Game {
         widthOfPipe = 70;
         pipes = new ArrayList<>();
         this.startGameAddPipes();
+        this.score = 0;
+        username = "";
     }
     
     public void startGameAddPipes() {
@@ -80,8 +86,8 @@ public final class Game {
     private void createPipe(int whereToStart) {
         int positionY = (int) (100 + Math.random() * (Game.height / 2));
         int positionX = 800 + whereToStart;
-        Pipe topPipe = new Pipe(positionX, 0, positionY, widthOfPipe, 2);
-        Pipe bottomPipe = new Pipe(positionX, positionY + 175, Game.height - (positionY + 150), widthOfPipe, 2);
+        Pipe topPipe = new Pipe(positionX, 0, positionY, widthOfPipe, 2, true);
+        Pipe bottomPipe = new Pipe(positionX, positionY + 175, Game.height - (positionY + 150), widthOfPipe, 2, false);
         pipes.add(topPipe);
         pipes.add(bottomPipe);
 
@@ -109,6 +115,7 @@ public final class Game {
         for (Pipe pipe : this.pipes) {
             if (pipe.positionX + pipe.width < 0) {
                 pipe.positionX = 4 * (widthOfPipe + spaceBetweenPipes) - widthOfPipe;
+                pipe.scored = false;
             }
         }
 
@@ -122,6 +129,19 @@ public final class Game {
         
         this.gameBird.positionX = width / 2 - 200;
         this.gameBird.positionY = height / 2 - 15;
+    
+        this.score = 0;
         
+    }
+
+    public void countScore() {
+        for (Pipe pipe : this.pipes) {
+            if (pipe.positionX + pipe.width < this.gameBird.positionX 
+                    && pipe.scored == false
+                    && pipe.topPipe == true) {
+                this.score++;
+                pipe.scored = true;
+            }
+        }
     }
 }

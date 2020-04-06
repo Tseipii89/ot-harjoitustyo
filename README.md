@@ -22,11 +22,11 @@ You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:ch
 
 ## School project ##
 
-[Hours Sheet](/dokumentointi/hourSheet.md)
+[Hours Sheet](/documents/hourSheet.md)
 
-[Requirements analysis](/dokumentointi/Requirements.md)
+[Requirements analysis](/documents/Requirements.md)
 
-[Architecture Definition](/dokumentointi/architectureDefinition.md)
+[Architecture Definition](/documents/architectureDefinition.md)
 
 
 

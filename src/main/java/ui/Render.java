@@ -6,12 +6,21 @@ import domain.Game;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import static javafx.scene.layout.BackgroundRepeat.NO_REPEAT;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -23,6 +32,8 @@ public class Render extends Application {
     private final ArrayList<String> input;
     private static Game gameMotor;
     public static Image background;
+    public Scene theGameScene;
+    public Canvas gameCanvas;
     
     public Render(Game gameMotor) {
         this.root = new Group();
@@ -36,26 +47,54 @@ public class Render extends Application {
         
         gameWindow.setTitle("Flappy Bird- flapity flap: UP-arrow to bounce the birdie!");
         // We add the root node for the possibility to start adding different elements
-        Scene theScene = new Scene(root);
-        gameWindow.setScene(theScene);
+        this.starterScene(gameWindow);
+        this.initGameScene();
+        gameWindow.show();
+        this.newWaitForUpArrowScreen(gameWindow);
+    }
+    
+    private void starterScene(Stage gameWindow) {
+        Label label= new Label("Write your nickname to start");
+        Button button1= new Button("Start the Game!");
+        TextField nickName = new TextField();
+        button1.setOnAction((ActionEvent e) -> {
+            if (nickName.getText().length() < 3 ) {
+                label.setText("Nickname has to be at least 3 chracters long");
+            } else {
+                gameMotor.username = nickName.getText();
+                gameWindow.setScene(theGameScene);
+            }
+        });  
+        BorderPane startScreenLayout = new BorderPane();
+        VBox middleSet = new VBox();
+        middleSet.setSpacing(10);
+        middleSet.getChildren().addAll(label, nickName, button1);
+        startScreenLayout.setCenter(middleSet);
+        BackgroundImage startBackgroundImage = new BackgroundImage(Render.background, NO_REPEAT, NO_REPEAT, null, null);
+        startScreenLayout.setBackground(new Background(startBackgroundImage));
+        Scene startScene = new Scene(startScreenLayout, gameMotor.width, gameMotor.height);
+        gameWindow.setScene(startScene);
+        
+    }
+    
+    private void initGameScene() {
+        theGameScene = new Scene(root);
                        
-        Canvas gameCanvas = new Canvas(gameMotor.width, gameMotor.height);
+        gameCanvas = new Canvas(gameMotor.width, gameMotor.height);
         root.getChildren().add(gameCanvas);
         
         this.graphicsContext = gameCanvas.getGraphicsContext2D();
-
-        theScene.setOnKeyPressed((KeyEvent e) -> {
+        graphicsContext.drawImage( Render.background, 0, 0 );
+        theGameScene.setOnKeyPressed((KeyEvent e) -> {
             String code = e.getCode().toString();
             // only add once... prevent duplicates
             if ( !input.contains(code) )
                 input.add( code );
         });
-        theScene.setOnKeyReleased((KeyEvent e) -> {
+        theGameScene.setOnKeyReleased((KeyEvent e) -> {
             String code = e.getCode().toString();
             input.remove( code );
-        });
-        
-        this.newWaitForUpArrowScreen(gameWindow);                       
+        });   
     }
     
     
@@ -85,23 +124,34 @@ public class Render extends Application {
                 gameMotor.gameBird.render(graphicsContext);
                 gameMotor.checkIfGameOn();
                 gameMotor.updatePipes();
+                gameMotor.countScore();
+                this.setText();
             } 
         }
         private void newStartScreen() {
             if(!gameMotor.isRunning) {
-                graphicsContext.setFill( Color.RED );
-                graphicsContext.setStroke( Color.BLACK );
-                graphicsContext.setLineWidth(2);
-                Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
-                graphicsContext.setFont( theFont );
-                graphicsContext.fillText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 100 );
-                graphicsContext.strokeText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 100 );
+                this.setText();
                 if(input.contains("UP")){
                    gameMotor.reset();
                    gameMotor.isRunning = true;
                 }
+            }
+        }
+        private void setText() {
+            graphicsContext.setFill( Color.RED );
+            Font ScoreFont = Font.font( "Times New Roman", FontWeight.BOLD, 24 );
+            graphicsContext.setFont( ScoreFont );            
+            graphicsContext.fillText( "Points: "+ gameMotor.score, 50, 50 );
+            graphicsContext.fillText( "User: "+ gameMotor.username, 50, 20 );
+            if(!gameMotor.isRunning) {
+            graphicsContext.setStroke( Color.BLACK );
+            graphicsContext.setLineWidth(2);
+            Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
+            graphicsContext.setFont( theFont );
+                graphicsContext.fillText( "Start a new game by \n"
+                        + "pressing UP -arrow", 200, 100 );
+                graphicsContext.strokeText( "Start a new game by \n"
+                        + "pressing UP -arrow", 200, 100 );
             }
         }
         }.start();
