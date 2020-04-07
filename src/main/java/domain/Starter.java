@@ -24,7 +24,7 @@ public class Starter extends Application {
         peliRender.start(primaryStage);
     }
     
-     public static void main(String[] args)  {
+    public static void main(String[] args)  {
         launch(args);
     }
     

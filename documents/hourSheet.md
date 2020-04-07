@@ -26,4 +26,5 @@
 | 5.4. | 0.5 | Jar paketin luomisen mahdollistaminen |
 | 6.4. | 0.5 | Pisteiden lasku toiminnallisuus |
 | 6.4. | 2 | Aloitusruudun teko|
-| yht   | 29.5 | | 
+| 7.4. | 0.5 | 4. viikon tavoitteiden tarkistus |
+| yht   | 30| | 

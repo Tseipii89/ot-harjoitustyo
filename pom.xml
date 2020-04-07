@@ -35,6 +35,8 @@
                 <configuration>
                     <excludes>
                         <exclude>/ui/*</exclude>
+                        <exclude>/domain/Starter*</exclude>
+                        <exclude>/Main*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
