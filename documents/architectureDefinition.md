@@ -4,7 +4,7 @@
 
 Application follows [Three-tier](https://en.wikipedia.org/wiki/Multitier_architecture) architecture and the structure (and classes) are as follows:
 
-<img src="/dokumentointi/images/layer-architecture.png">
+<img src="/documents/images/layer-architecture.png">
 
 Package _flappyBird.ui_ handles the interface using JavaFX 
 
