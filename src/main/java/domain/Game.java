@@ -1,14 +1,12 @@
 
 package domain;
 
+import dao.HighscoreDao;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import ui.Render;
+
 
 
 public final class Game {
@@ -24,8 +22,9 @@ public final class Game {
     public int widthOfPipe;
     public int score;
     public String username;
+    public HighscoreDao highscore; 
        
-    public Game(Bird gameBird, int height, int width) throws FileNotFoundException {
+    public Game(Bird gameBird, int height, int width, HighscoreDao highscore) throws FileNotFoundException {
         this.gameBird = gameBird;
         Game.height = height;
         Game.width = width;
@@ -36,6 +35,7 @@ public final class Game {
         this.startGameAddPipes();
         this.score = 0;
         username = "";
+        this.highscore = highscore;
     }
     
     public Game(Bird gameBird) {
@@ -129,7 +129,10 @@ public final class Game {
         
         this.gameBird.positionX = width / 2 - 200;
         this.gameBird.positionY = height / 2 - 15;
-    
+        if(this.score > this.highscore.ReadHighscore()) {
+            Nickname newChampion = new Nickname(this.username, this.score);
+            this.highscore.Update(newChampion);
+        }
         this.score = 0;
         
     }

@@ -1,6 +1,12 @@
 package domain;
 
+import dao.FileHighscoreDao;
+import java.io.File;
+
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -12,13 +18,17 @@ public class Starter extends Application {
     private static Image birdie; 
 
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
+    public void start(Stage primaryStage) throws FileNotFoundException, IOException {
         birdie = new Image("/images/flappybird.png");
         int height = 600;
         int width = 800;
         Bird flappyBirdie = new Bird(birdie, height, width);
         
-        Game peli = new Game(flappyBirdie, height, width);
+        File fileName = new File("highscore.txt");
+        
+        FileHighscoreDao fileHighscoreDao = new FileHighscoreDao(fileName);
+        
+        Game peli = new Game(flappyBirdie, height, width, fileHighscoreDao);
         Render peliRender = new Render(peli);
 
         peliRender.start(primaryStage);

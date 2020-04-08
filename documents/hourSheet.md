@@ -27,4 +27,6 @@
 | 6.4. | 0.5 | Pisteiden lasku toiminnallisuus |
 | 6.4. | 2 | Aloitusruudun teko|
 | 7.4. | 0.5 | 4. viikon tavoitteiden tarkistus |
-| yht   | 30| | 
+| 8.4. | 0.5 | DAO malliin tutustuminen (taas) |
+| 8.4. | 2.5 | Tiedostoon tallentaminen käyttäjänimi + huippupisteet (DAO rajapinta) |
+| yht   | 34 | | 

@@ -143,6 +143,8 @@ public class Render extends Application {
             graphicsContext.setFont( ScoreFont );            
             graphicsContext.fillText( "Points: "+ gameMotor.score, 50, 50 );
             graphicsContext.fillText( "User: "+ gameMotor.username, 50, 20 );
+            graphicsContext.fillText( "Highscore: "+ gameMotor.highscore.ReadHighscore(), 600, 50 );
+            graphicsContext.fillText( "User: "+ gameMotor.highscore.ReadNickname(), 600, 20 );
             if(!gameMotor.isRunning) {
             graphicsContext.setStroke( Color.BLACK );
             graphicsContext.setLineWidth(2);
