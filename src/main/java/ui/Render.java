@@ -61,7 +61,7 @@ public class Render extends Application {
             if (nickName.getText().length() < 3 ) {
                 label.setText("Nickname has to be at least 3 chracters long");
             } else {
-                gameMotor.username = nickName.getText();
+                gameMotor.setUsername(nickName.getText()); 
                 gameWindow.setScene(theGameScene);
             }
         });  
@@ -72,7 +72,7 @@ public class Render extends Application {
         startScreenLayout.setCenter(middleSet);
         BackgroundImage startBackgroundImage = new BackgroundImage(Render.background, NO_REPEAT, NO_REPEAT, null, null);
         startScreenLayout.setBackground(new Background(startBackgroundImage));
-        Scene startScene = new Scene(startScreenLayout, gameMotor.width, gameMotor.height);
+        Scene startScene = new Scene(startScreenLayout, gameMotor.getWidth(), gameMotor.getHeight());
         gameWindow.setScene(startScene);
         
     }
@@ -80,7 +80,7 @@ public class Render extends Application {
     private void initGameScene() {
         theGameScene = new Scene(root);
                        
-        gameCanvas = new Canvas(gameMotor.width, gameMotor.height);
+        gameCanvas = new Canvas(gameMotor.getWidth(), gameMotor.getHeight());
         root.getChildren().add(gameCanvas);
         
         this.graphicsContext = gameCanvas.getGraphicsContext2D();
@@ -107,21 +107,21 @@ public class Render extends Application {
         @Override
         public void handle(long startNanoTime) {
       
-            if(gameMotor.isRunning){
+            if(gameMotor.getIsTheGameRunning()){
                 this.newGameRun( startNanoTime);
             } else {
                 this.newStartScreen();
             }
         }
         private void newGameRun(long currentNanoTime) {
-            if(gameMotor.isRunning) {
+            if(gameMotor.getIsTheGameRunning()) {
                 int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
                 // updates the birds position on the screen
                 gameMotor.updateBirdPlacement(input, time);
                 // render the background again so there isn't any "shadows" for the bird
                 graphicsContext.drawImage( Render.background, 0, 0 );
                 gameMotor.drawPipes(graphicsContext, time);
-                gameMotor.gameBird.render(graphicsContext);
+                gameMotor.getTheGameBird().render(graphicsContext);
                 gameMotor.checkIfGameOn();
                 gameMotor.updatePipes();
                 gameMotor.countScore();
@@ -129,11 +129,11 @@ public class Render extends Application {
             } 
         }
         private void newStartScreen() {
-            if(!gameMotor.isRunning) {
+            if(!gameMotor.getIsTheGameRunning()) {
                 this.setText();
                 if(input.contains("UP")){
                    gameMotor.reset();
-                   gameMotor.isRunning = true;
+                   gameMotor.setTheGameRunning(true);
                 }
             }
         }
@@ -141,11 +141,11 @@ public class Render extends Application {
             graphicsContext.setFill( Color.RED );
             Font ScoreFont = Font.font( "Times New Roman", FontWeight.BOLD, 24 );
             graphicsContext.setFont( ScoreFont );            
-            graphicsContext.fillText( "Points: "+ gameMotor.score, 50, 50 );
-            graphicsContext.fillText( "User: "+ gameMotor.username, 50, 20 );
-            graphicsContext.fillText( "Highscore: "+ gameMotor.highscore.ReadHighscore(), 600, 50 );
-            graphicsContext.fillText( "User: "+ gameMotor.highscore.ReadNickname(), 600, 20 );
-            if(!gameMotor.isRunning) {
+            graphicsContext.fillText( "Points: "+ gameMotor.getPoints(), 50, 50 );
+            graphicsContext.fillText( "User: "+ gameMotor.getUsername(), 50, 20 );
+            graphicsContext.fillText( "Highscore: "+ gameMotor.getHighscore(), 600, 50 );
+            graphicsContext.fillText( "User: "+ gameMotor.getAllTimePlayer(), 600, 20 );
+            if(!gameMotor.getIsTheGameRunning()) {
             graphicsContext.setStroke( Color.BLACK );
             graphicsContext.setLineWidth(2);
             Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );

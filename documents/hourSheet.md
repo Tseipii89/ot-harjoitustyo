@@ -29,4 +29,5 @@
 | 7.4. | 0.5 | 4. viikon tavoitteiden tarkistus |
 | 8.4. | 0.5 | DAO malliin tutustuminen (taas) |
 | 8.4. | 2.5 | Tiedostoon tallentaminen käyttäjänimi + huippupisteet (DAO rajapinta) |
-| yht   | 34 | | 
+| 11.4. | 3 | Javadocin lisääminen ja täydentäminen |
+| yht   | 37 | | 

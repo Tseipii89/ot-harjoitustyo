@@ -35,9 +35,9 @@ public class BirdTest {
 
     @Test
     public void birdJumpMethodNullifiesMotion() {
-        testBirdie.motionY = 40;
+        testBirdie.setMotionY(40);
         testBirdie.birdJump();
-        assertThat(0, is(testBirdie.motionY));
+        assertThat(0, is(testBirdie.getMotionY()));
     }
     
 }
