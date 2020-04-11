@@ -10,7 +10,7 @@ FlappyBird is a game where you try to fly through pipes with a bouncing bird. Th
 
 Do a normal clone of the git repo to your wanted folder (the command is "git clone git@github.com:Tseipii89/ot-harjoitustyo.git").
 
-Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=Main"
+Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=main.Main"
 
 You can also create a JAR file via command "mvn package". This file can be found at *target/FlappyBird-1.0-SNAPSHOT.jar*
 
