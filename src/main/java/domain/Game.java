@@ -9,6 +9,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  *
+ * Class works as a motor for the game. It handles all the logic behind the game.
+ * 
  * @author juhop
  */
 public final class Game {
@@ -18,11 +20,11 @@ public final class Game {
 
     private static int width;
 
-    private Bird gameBird;
+    private final Bird gameBird;
 
     private boolean isRunning;
 
-    private ArrayList<Pipe> pipes;
+    private final ArrayList<Pipe> pipes;
 
     private int spaceBetweenPipes;
 
@@ -67,7 +69,7 @@ public final class Game {
     
     /**
      *
-     * This constructor is only to be used by testing 
+     * This constructor is only to be used by testing. 
      * 
      * @param gameBird the gamebird used by testing
      */
@@ -137,7 +139,7 @@ public final class Game {
     
     /**
     *
-    * Sets the game is running value
+    * Sets the game is running value.
     * 
     * @param running boolean value is the game running or not
     */
@@ -187,7 +189,7 @@ public final class Game {
     
     /**
     *
-    * This is only used for testing purposes
+    * This is only used for testing purposes.
     * 
     * @return the pipes arraylist
     */
@@ -222,7 +224,7 @@ public final class Game {
 
 
     /**
-     * Jumps the bird if birdNotOutOfField
+     * Jumps the bird if birdNotOutOfField.
      * @see Game#birdNotOutOfField() 
      * @see Bird#birdJump() 
      */
@@ -267,7 +269,6 @@ public final class Game {
                 false);
         pipes.add(topPipe);
         pipes.add(bottomPipe);
-
     }
 
     /**
@@ -286,7 +287,7 @@ public final class Game {
 
     /**
      *
-     * Draws the Pipes to the given graphicContext
+     * Draws the Pipes to the given graphicContext.
      * 
      * @param graphicsContext the graphicContext where the pipes are drawn
      * @param time the pipes move in the X -axel everytime by given motionX
@@ -304,19 +305,21 @@ public final class Game {
      * Updates the pipe X position to the right side of the screen if the Pipe has moved out of the left side of the screen.
      * Sets the pipes score value to true, so that the pipe can be scored again.
      * Updates the placement of the hole.
+     * @see domain.Pipe#setHeight(int) 
+     * @see domain.Pipe#setPositionX(int) 
      */
     public void updatePipes() {
         int pipeHeight = (int) (100 + Math.random() * (Game.height / 2));
         for (Pipe pipe : this.pipes) {
-            if (pipe.positionX + pipe.width < 0) {
-                pipe.positionX = 4 * (widthOfPipe + spaceBetweenPipes) - widthOfPipe;
-                if(pipe.topPipe == true) {
-                    pipe.height = pipeHeight;
+            if (pipe.getPositionX() + pipe.getWidth() < 0) {
+                pipe.setPositionX(4 * (widthOfPipe + spaceBetweenPipes) - widthOfPipe);
+                if (pipe.isTopPipe() == true) {
+                    pipe.setHeight(pipeHeight);
                 } else {
-                    pipe.positionY = pipeHeight + 175;
-                    pipe.height = Game.height - (pipeHeight + 150);
+                    pipe.setPositionY(pipeHeight + 175);
+                    pipe.setHeight(Game.height - (pipeHeight + 150));
                 }
-                pipe.scored = false;
+                pipe.setScored(false);
             }
         }
 
@@ -347,11 +350,11 @@ public final class Game {
      */
     public void countScore() {
         for (Pipe pipe : this.pipes) {
-            if (pipe.positionX + pipe.width < this.gameBird.getX()
-                    && pipe.scored == false
-                    && pipe.topPipe == true) {
+            if (pipe.getPositionX() + pipe.getWidth() < this.gameBird.getX()
+                    && pipe.isScored() == false
+                    && pipe.isTopPipe() == true) {
                 this.score++;
-                pipe.scored = true;
+                pipe.setScored(true);
             }
         }
     }

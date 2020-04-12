@@ -63,7 +63,7 @@ public class FileHighscoreDao implements HighscoreDao {
      */
     @Override
     public Integer readHighscore() {
-        return this.nickname.highscore;
+        return this.nickname.getHighscore();
     }
 
     /**
@@ -74,7 +74,7 @@ public class FileHighscoreDao implements HighscoreDao {
      */
     @Override
     public Object readNickname() {
-        return this.nickname.name;
+        return this.nickname.getName();
     }
     
     /**
@@ -92,7 +92,7 @@ public class FileHighscoreDao implements HighscoreDao {
     public boolean update(Object object) {
         this.nickname = (Nickname) object;
         try (FileWriter writer = new FileWriter(file)) {
-            writer.write(nickname.name + ";" + Integer.toString(nickname.highscore)); 
+            writer.write(nickname.getName() + ";" + Integer.toString(nickname.getHighscore())); 
             return true;
         } catch (IOException ex) {
             return false;

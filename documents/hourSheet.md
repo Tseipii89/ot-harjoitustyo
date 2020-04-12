@@ -30,4 +30,5 @@
 | 8.4. | 0.5 | DAO malliin tutustuminen (taas) |
 | 8.4. | 2.5 | Tiedostoon tallentaminen käyttäjänimi + huippupisteet (DAO rajapinta) |
 | 11.4. | 3 | Javadocin lisääminen ja täydentäminen |
-| yht   | 37 | | 
+| 12.4. | 1.5 | Javadocin täydentäminen |
+| yht   | 38.5 | | 
