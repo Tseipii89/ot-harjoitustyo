@@ -24,7 +24,7 @@ public final class Game {
 
     private boolean isRunning;
 
-    private final ArrayList<Pipe> pipes;
+    private ArrayList<Pipe> pipes;
 
     private int spaceBetweenPipes;
 
@@ -67,24 +67,6 @@ public final class Game {
         this.highscore = highscore;
     }
     
-    /**
-     *
-     * This constructor is only to be used by testing. 
-     * 
-     * @param gameBird the gamebird used by testing
-     */
-    public Game(Bird gameBird) {
-        this.gameBird = gameBird;
-        Game.height = 600;
-        Game.width = 800;
-        isRunning = false;
-        spaceBetweenPipes = 300;
-        widthOfPipe = 70;
-        pipes = new ArrayList<>();
-        this.startGameAddPipes();
-        this.score = 0;
-        username = "";
-    }
     
     /**
     *
@@ -195,6 +177,18 @@ public final class Game {
     */
     public ArrayList<Pipe> getThePipes() {
         return this.pipes;
+    }
+    
+    
+    /**
+    *
+    * This is only used for testing purposes.
+    * 
+     * @param pipeToAdd used as a testing parameter
+    */
+    public void setThePipes(Pipe pipeToAdd) {
+        this.pipes.add(pipeToAdd);
+      
     }
     
     /**
