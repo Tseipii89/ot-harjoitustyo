@@ -14,6 +14,10 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 
 You can also create a JAR file via command "mvn package". This file can be found at *target/FlappyBird-1.0-SNAPSHOT.jar*
 
+### Javadoc ###
+
+Javadoc can be created using command "mvn javadoc:javadoc". Javadoc can be found at *target/site/apidocs/index.html*
+
 ### Test and Style ###
 
 You can generate the jacoco report with command "mvn jacoco:report". You find this document under *target/site/jacoco/index.html* OR you can just run the rest with command "mvn test"
