@@ -33,5 +33,5 @@
 | 12.4. | 1.5 | Javadocin täydentäminen |
 | 13.4. | 1.5 | Testien laajentaminen |
 | 16.4. | 0.5 | Javadocin täydentäminen |
-| 16.4. | 0.5 | Sekvenssikaavion tekeminen |
-| yht   | 40 | | 
+| 16.4. | 1 | Sekvenssikaavion tekeminen |
+| yht   | 40.5 | | 
