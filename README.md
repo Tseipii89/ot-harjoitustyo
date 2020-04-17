@@ -12,7 +12,11 @@ Do a normal clone of the git repo to your wanted folder (the command is "git clo
 
 Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=main.Main"
 
-You can also create a JAR file via command "mvn package". This file can be found at *target/FlappyBird-1.0-SNAPSHOT.jar*
+## Releases ##
+
+[Versio 1.0](https://github.com/Tseipii89/ot-harjoitustyo/releases)
+
+You can run the JAR -file with command "java -jar FlappyBird.jar" after you have entered to the directory where ther JAR -file is located.
 
 ### Javadoc ###
 
