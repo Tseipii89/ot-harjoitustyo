@@ -35,5 +35,5 @@
 | 16.4. | 0.5 | Javadocin täydentäminen |
 | 16.4. | 1 | Sekvenssikaavion tekeminen |
 | 17.4. | 0.5 | Issueiden salliminen ja ekan releasen luonti |
-| 17.4. | 0.5 | Ekan releasen ongelman selvittely |
-| yht   | 41.5 | | 
+| 17.4. | 1 | Ekan releasen ongelman selvittely |
+| yht   | 42 | | 
