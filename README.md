@@ -14,7 +14,7 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 
 ## Releases ##
 
-[Versio 1.0](https://github.com/Tseipii89/ot-harjoitustyo/releases)
+[Versio 1.0](https://github.com/Tseipii89/ot-harjoitustyo/releases/tag/Viikko5)
 
 You can run the JAR -file with command "java -jar FlappyBird.jar" after you have entered to the directory where ther JAR -file is located.
 
