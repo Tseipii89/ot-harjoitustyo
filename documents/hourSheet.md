@@ -34,4 +34,5 @@
 | 13.4. | 1.5 | Testien laajentaminen |
 | 16.4. | 0.5 | Javadocin täydentäminen |
 | 16.4. | 1 | Sekvenssikaavion tekeminen |
-| yht   | 40.5 | | 
+| 17.4. | 0.5 | Issueiden salliminen ja ekan releasen luonti |
+| yht   | 41 | | 
