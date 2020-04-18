@@ -36,4 +36,6 @@
 | 16.4. | 1 | Sekvenssikaavion tekeminen |
 | 17.4. | 0.5 | Issueiden salliminen ja ekan releasen luonti |
 | 17.4. | 1 | Ekan releasen ongelman selvittely |
-| yht   | 42 | | 
+| 18.4. | 0.5 | Game ja Render luokan refaktorointi |
+| 18.4. | 1 | Aloitusruudun siistiminen |
+| yht   | 43 | | 

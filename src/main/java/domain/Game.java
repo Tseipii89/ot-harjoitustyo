@@ -24,11 +24,15 @@ public final class Game {
 
     private boolean isRunning;
 
-    private ArrayList<Pipe> pipes;
+    private final ArrayList<Pipe> pipes;
 
     private int spaceBetweenPipes;
 
     private int widthOfPipe;
+    
+    private int sizeOfHole;
+    
+    private int howManyPipesBeginning;
 
     private int score;
 
@@ -55,15 +59,17 @@ public final class Game {
      */
     public Game(Bird gameBird, int height, int width, HighscoreDao highscore) throws FileNotFoundException {
         this.gameBird = gameBird;
-        Game.height = height;
-        Game.width = width;
-        isRunning = false;
-        spaceBetweenPipes = 300;
-        widthOfPipe = 70;
-        pipes = new ArrayList<>();
+        this.height = height;
+        this.width = width;
+        this.isRunning = false;
+        this.spaceBetweenPipes = 300;
+        this.widthOfPipe = 70;
+        this.sizeOfHole = 175;
+        this.howManyPipesBeginning = 4;
+        this.pipes = new ArrayList<>();
         this.startGameAddPipes();
         this.score = 0;
-        username = "";
+        this.username = "";
         this.highscore = highscore;
     }
     
@@ -196,7 +202,7 @@ public final class Game {
      * These same pipes are used throughout the game.
      */
     public void startGameAddPipes() {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < this.howManyPipesBeginning; i++) {
             createPipe(i * (widthOfPipe + spaceBetweenPipes));
         }
     }
@@ -252,12 +258,12 @@ public final class Game {
      */
     private void createPipe(int whereToStart) {
         int pipeHeight = (int) (100 + Math.random() * (Game.height / 2));
-        int positionX = 800 + whereToStart;
+        int positionX = this.width + whereToStart;
         Pipe topPipe = new Pipe(positionX, 0, pipeHeight, widthOfPipe, 2, true);
         Pipe bottomPipe = new Pipe(
                 positionX, 
-                pipeHeight + 175, 
-                Game.height - (pipeHeight + 150), 
+                pipeHeight + this.sizeOfHole, // Bottom Pipe starts sizeOfHole points lower than the top Pipe ends, so the hole in the Pipes is sizeOfHole points
+                Game.height - (pipeHeight + this.sizeOfHole), // Bottom Pipe height is the height of the screen minus the height of the top Pipe and the wanted hole
                 widthOfPipe, 
                 2, 
                 false);
@@ -305,15 +311,15 @@ public final class Game {
     public void updatePipes() {
         int pipeHeight = (int) (100 + Math.random() * (Game.height / 2));
         for (Pipe pipe : this.pipes) {
-            if (pipe.getPositionX() + pipe.getWidth() < 0) {
-                pipe.setPositionX(4 * (widthOfPipe + spaceBetweenPipes) - widthOfPipe);
+            if (pipe.getPositionX() + pipe.getWidth() < 0) { // Checks if Pipe has gone out of sight from the left edge
+                pipe.setPositionX(this.howManyPipesBeginning * (widthOfPipe + spaceBetweenPipes) - widthOfPipe); // Only one top and bottom Pipe will be updated at a time, so the others are on their way and this Pipes x -position should be updated accordinly
                 if (pipe.isTopPipe() == true) {
                     pipe.setHeight(pipeHeight);
-                } else {
-                    pipe.setPositionY(pipeHeight + 175);
-                    pipe.setHeight(Game.height - (pipeHeight + 150));
+                } else { // Bottom Pipe needs a new y -position and height
+                    pipe.setPositionY(pipeHeight + this.sizeOfHole);
+                    pipe.setHeight(Game.height - (pipeHeight + this.sizeOfHole));
                 }
-                pipe.setScored(false);
+                pipe.setScored(false); // The Pipe should be able to be scored again
             }
         }
 
@@ -325,11 +331,15 @@ public final class Game {
      * Reset the game. Sets the Bird in the beginning position, updates the Highscore DAO if needed and sets the score of the new game to 0.
      */
     public void reset() {
+        // New Pipes
         this.pipes.clear();
         this.startGameAddPipes();
         
+        // "New" Bird
         this.gameBird.setX(width / 2 - 200);
         this.gameBird.setY(height / 2 - 15);
+        
+        // Check if player got new highscore
         if (this.score > this.highscore.readHighscore()) {
             Nickname newChampion = new Nickname(this.username, this.score);
             this.highscore.update(newChampion);
@@ -346,7 +356,8 @@ public final class Game {
         for (Pipe pipe : this.pipes) {
             if (pipe.getPositionX() + pipe.getWidth() < this.gameBird.getX()
                     && pipe.isScored() == false
-                    && pipe.isTopPipe() == true) {
+                    && pipe.isTopPipe() == true) // Every Pipe comes as a pair of top and bottom Pipe. Check if Pipe is top so that the pair is scored only once.
+            {
                 this.score++;
                 pipe.setScored(true);
             }
