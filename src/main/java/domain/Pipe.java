@@ -60,6 +60,7 @@ public class Pipe implements Sprite {
      * 
      * @return x -position of Pipe
      */
+    @Override
     public int getPositionX() {
         return positionX;
     }
@@ -70,6 +71,7 @@ public class Pipe implements Sprite {
      * 
      * @param positionX the value to change the Pipes x -axis value to
      */
+    @Override
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
@@ -80,6 +82,7 @@ public class Pipe implements Sprite {
      * 
      * @return y -position of Pipe
      */
+    @Override
     public int getPositionY() {
         return positionY;
     }
@@ -90,6 +93,7 @@ public class Pipe implements Sprite {
      * 
      * @param positionY the value to change the Pipes y -axis value to
      */
+    @Override
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }

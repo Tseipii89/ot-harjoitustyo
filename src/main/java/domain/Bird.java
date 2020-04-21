@@ -70,7 +70,8 @@ public class Bird implements Sprite {
      * 
      * @return Integer x -position of the Bird
      */
-    public int getX() {
+    @Override
+    public int getPositionX() {
         return this.positionX;
     }
     
@@ -80,7 +81,8 @@ public class Bird implements Sprite {
      * 
      * @param x Integer sets the Bird x -position
      */
-    public void setX(int x) {
+    @Override
+    public void setPositionX(int x) {
         this.positionX = x;
     }
     
@@ -90,7 +92,8 @@ public class Bird implements Sprite {
      * 
      * @return Integer x -position of the Bird
      */
-    public int getY() {
+    @Override
+    public int getPositionY() {
         return this.positionY;
     }
     
@@ -100,7 +103,8 @@ public class Bird implements Sprite {
      * 
      * @param y Integer sets the Bird y -position
      */
-    public void setY(int y) {
+    @Override
+    public void setPositionY(int y) {
         this.positionY = y;
     }
     

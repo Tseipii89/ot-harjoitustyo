@@ -38,4 +38,7 @@
 | 17.4. | 1 | Ekan releasen ongelman selvittely |
 | 18.4. | 0.5 | Game ja Render luokan refaktorointi |
 | 18.4. | 1 | Aloitusruudun siistiminen |
-| yht   | 43 | | 
+| 19.4. | 0.5 | Sprite rajapinnan muokkaus + luokkien kuvaaminen arkkitehtuuri dokumentaatiossa |
+| 19.4. | 1.5 | Arkkitehtuuridokumentaation tarkentaminen |
+| 21.4. | 1 | Arkkitehtuuridokumentaation tarkentaminen |
+| yht   | 46 | | 

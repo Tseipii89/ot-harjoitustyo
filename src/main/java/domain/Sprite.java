@@ -12,6 +12,15 @@ import javafx.scene.canvas.GraphicsContext;
  * @author juhop
  */
 public interface Sprite {
+    
+    
+    public int getPositionX();
+    
+    public void setPositionX(int positionX);
+    
+    public int getPositionY();
+    
+    public void setPositionY(int positionY);
 
     /**
      *

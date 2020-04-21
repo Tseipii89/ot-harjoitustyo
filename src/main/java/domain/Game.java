@@ -336,8 +336,8 @@ public final class Game {
         this.startGameAddPipes();
         
         // "New" Bird
-        this.gameBird.setX(width / 2 - 200);
-        this.gameBird.setY(height / 2 - 15);
+        this.gameBird.setPositionX(width / 2 - 200);
+        this.gameBird.setPositionY(height / 2 - 15);
         
         // Check if player got new highscore
         if (this.score > this.highscore.readHighscore()) {
@@ -354,7 +354,7 @@ public final class Game {
      */
     public void countScore() {
         for (Pipe pipe : this.pipes) {
-            if (pipe.getPositionX() + pipe.getWidth() < this.gameBird.getX()
+            if (pipe.getPositionX() + pipe.getWidth() < this.gameBird.getPositionX()
                     && pipe.isScored() == false
                     && pipe.isTopPipe() == true) // Every Pipe comes as a pair of top and bottom Pipe. Check if Pipe is top so that the pair is scored only once.
             {
