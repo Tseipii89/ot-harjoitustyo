@@ -22,7 +22,7 @@ Lastly domain package has the Nickname -class that is used to only have the info
 
 _flappyBird.dao_ handles the persistence saving of data. The classes implement the [DAO](https://en.wikipedia.org/wiki/Data_access_object) model so new data access methods are easy to implement.
 
-The data access method used in this realisation of the game uses file to save the nickname and highscore holder in the format of "name;highscore". If there is no highscore, the game initializes the highscore file in the format of "none;0". The highscore file can be found at the root of the source name as a "highscore.txt".
+The data access method used in this realisation of the game uses file to save the nickname and highscore holder in the format of "name;highscore". The class to handle the file saving method is called "FileHighscoreDao". If there is no highscore, the game initializes the highscore file in the format of "none;0". The highscore file can be found at the root of the source name as a "highscore.txt".
 
 ## Initialization of a new game ##
 
