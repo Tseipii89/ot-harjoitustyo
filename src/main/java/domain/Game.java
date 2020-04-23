@@ -35,6 +35,8 @@ public final class Game {
     private int howManyPipesBeginning;
 
     private int score;
+    
+    private boolean newHighscore;
 
     private String username;
 
@@ -71,6 +73,7 @@ public final class Game {
         this.score = 0;
         this.username = "";
         this.highscore = highscore;
+        this.newHighscore = false;
     }
     
     
@@ -163,6 +166,10 @@ public final class Game {
     */
     public int getHighscore() {
         return this.highscore.readHighscore();
+    }
+    
+    public boolean getNewhighscore() {
+        return this.newHighscore;
     }
     
     /**
@@ -339,11 +346,7 @@ public final class Game {
         this.gameBird.setPositionX(width / 2 - 200);
         this.gameBird.setPositionY(height / 2 - 15);
         
-        // Check if player got new highscore
-        if (this.score > this.highscore.readHighscore()) {
-            Nickname newChampion = new Nickname(this.username, this.score);
-            this.highscore.update(newChampion);
-        }
+        this.newHighscore = false;
         this.score = 0;
         
     }
@@ -362,5 +365,10 @@ public final class Game {
                 pipe.setScored(true);
             }
         }
+        if (this.score > this.highscore.readHighscore()) {
+            this.newHighscore = true;
+            Nickname newChampion = new Nickname(this.username, this.score);
+            this.highscore.update(newChampion);
+        } 
     }
 }

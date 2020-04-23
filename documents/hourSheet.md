@@ -41,4 +41,6 @@
 | 19.4. | 0.5 | Sprite rajapinnan muokkaus + luokkien kuvaaminen arkkitehtuuri dokumentaatiossa |
 | 19.4. | 1.5 | Arkkitehtuuridokumentaation tarkentaminen |
 | 21.4. | 1 | Arkkitehtuuridokumentaation tarkentaminen |
-| yht   | 46 | | 
+| 23.4. | 0.5 | Onnittelu pop-up uudesta highscoresta |
+| 23.4. | 0.5 | Eri vaikeusasteet |
+| yht   | 47 | | 

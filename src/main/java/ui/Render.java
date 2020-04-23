@@ -158,15 +158,26 @@ public class Render extends Application {
             graphicsContext.fillText( "Highscore: "+ gameMotor.getHighscore(), gameMotor.getWidth()-200, 50 );
             graphicsContext.fillText( "User: "+ gameMotor.getAllTimePlayer(), gameMotor.getWidth()-200, 20 );
             
+            if(!gameMotor.getIsTheGameRunning() && gameMotor.getNewhighscore()) {
+            graphicsContext.setStroke( Color.BLACK );
+            graphicsContext.setLineWidth(2);
+            graphicsContext.setFont( h1Font );
+                graphicsContext.fillText( "You made a new highscore!!!\n" +
+                        "What a lad!", 100, 100 );
+                graphicsContext.strokeText( "You made a new highscore!!!\n" +
+                        "What a lad!", 100, 100 );
+            }
+            
             if(!gameMotor.getIsTheGameRunning()) {
             graphicsContext.setStroke( Color.BLACK );
             graphicsContext.setLineWidth(2);
             graphicsContext.setFont( h1Font );
                 graphicsContext.fillText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 100 );
+                        + "pressing UP -arrow", 200, 300 );
                 graphicsContext.strokeText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 100 );
+                        + "pressing UP -arrow", 200, 300 );
             }
+            
         }
         }.start();
         gameWindow.show();
