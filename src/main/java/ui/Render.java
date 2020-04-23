@@ -13,14 +13,18 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import static javafx.scene.layout.BackgroundRepeat.NO_REPEAT;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -74,20 +78,37 @@ public class Render extends Application {
         TextField nicknameTextfield = new TextField("Nickname has to be between 3 and 8 characters");
         nicknameTextfield.setMaxWidth(300); 
         Button button1= new Button("Start the Game!");
+
+        
+        final ToggleGroup levelGroup = new ToggleGroup();
+
+        RadioButton rb1 = new RadioButton("Easy");
+        rb1.setToggleGroup(levelGroup);
+        rb1.setSelected(true);
+
+        RadioButton rb2 = new RadioButton("Medium");
+        rb2.setToggleGroup(levelGroup);
+
+        RadioButton rb3 = new RadioButton("Hard");
+        rb3.setToggleGroup(levelGroup);
+        
+        
+        VBox middleSet = new VBox();
+        middleSet.setSpacing(10);
+        middleSet.getChildren().addAll(label, nicknameTextfield, rb1, rb2, rb3, button1);
+        middleSet.setAlignment(Pos.CENTER);
         button1.setOnAction((ActionEvent e) -> { // listener to see if nickname is too short or long
             if (nicknameTextfield.getText().length() < 3 || 
                 nicknameTextfield.getText().length() > 8) 
             {
                 label.setText("Nickname has to be between 3 and 8 characters");
             } else {
+                RadioButton rb = (RadioButton)levelGroup.getSelectedToggle();
+                gameMotor.setLevel(rb.getText());
                 gameMotor.setUsername(nicknameTextfield.getText()); 
                 gameWindow.setScene(theGameScene); // this changes the game scene on
             }
         }); 
-        VBox middleSet = new VBox();
-        middleSet.setSpacing(10);
-        middleSet.getChildren().addAll(label, nicknameTextfield, button1);
-        middleSet.setAlignment(Pos.CENTER);
         return middleSet;
     }
     

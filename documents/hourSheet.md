@@ -42,5 +42,5 @@
 | 19.4. | 1.5 | Arkkitehtuuridokumentaation tarkentaminen |
 | 21.4. | 1 | Arkkitehtuuridokumentaation tarkentaminen |
 | 23.4. | 0.5 | Onnittelu pop-up uudesta highscoresta |
-| 23.4. | 0.5 | Eri vaikeusasteet |
-| yht   | 47 | | 
+| 23.4. | 1 | Eri vaikeusasteet |
+| yht   | 47.5 | | 

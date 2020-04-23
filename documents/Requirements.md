@@ -34,6 +34,6 @@ Players enter the username to log in to the game. This nickname is only used to 
 Possbile improvements if time permits:
 
 - Users can create an username and password to signin/login into the system
-- The screen will show some congratulations pop-up if user makes new high score
-- Different difficulty settings
+- ~The screen will show some congratulations pop-up if user makes new high score~
+- ~Different difficulty settings~
 - Maybe some sound effects?

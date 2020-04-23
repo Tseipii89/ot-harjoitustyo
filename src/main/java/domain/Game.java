@@ -2,8 +2,11 @@
 package domain;
 
 import dao.HighscoreDao;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -31,6 +34,8 @@ public final class Game {
     private int widthOfPipe;
     
     private int sizeOfHole;
+    
+    private int speedOfPipes;
     
     private int howManyPipesBeginning;
 
@@ -68,6 +73,7 @@ public final class Game {
         this.widthOfPipe = 70;
         this.sizeOfHole = 175;
         this.howManyPipesBeginning = 4;
+        this.speedOfPipes = 2;
         this.pipes = new ArrayList<>();
         this.startGameAddPipes();
         this.score = 0;
@@ -266,13 +272,13 @@ public final class Game {
     private void createPipe(int whereToStart) {
         int pipeHeight = (int) (100 + Math.random() * (Game.height / 2));
         int positionX = this.width + whereToStart;
-        Pipe topPipe = new Pipe(positionX, 0, pipeHeight, widthOfPipe, 2, true);
+        Pipe topPipe = new Pipe(positionX, 0, pipeHeight, widthOfPipe, speedOfPipes, true);
         Pipe bottomPipe = new Pipe(
                 positionX, 
                 pipeHeight + this.sizeOfHole, // Bottom Pipe starts sizeOfHole points lower than the top Pipe ends, so the hole in the Pipes is sizeOfHole points
                 Game.height - (pipeHeight + this.sizeOfHole), // Bottom Pipe height is the height of the screen minus the height of the top Pipe and the wanted hole
                 widthOfPipe, 
-                2, 
+                speedOfPipes, 
                 false);
         pipes.add(topPipe);
         pipes.add(bottomPipe);
@@ -370,5 +376,39 @@ public final class Game {
             Nickname newChampion = new Nickname(this.username, this.score);
             this.highscore.update(newChampion);
         } 
+    }
+
+    public void setLevel(String levelText) throws FileNotFoundException, IOException {
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        switch (levelText) {
+            case "Easy":
+                this.setLevelEasy(properties);
+                break;
+            case "Medium":
+                this.setLevelMedium(properties);
+                break;
+            default:
+                this.setLevelHard(properties);
+                break;
+        }
+    }
+
+    private void setLevelEasy(Properties properties) {
+       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("EasyspaceBetweenPipes"));
+       this.sizeOfHole = Integer.parseInt(properties.getProperty("EasysizeOfHole"));
+       this.speedOfPipes = Integer.parseInt(properties.getProperty("EasyspeedOfPipes"));
+    }
+
+    private void setLevelMedium(Properties properties) {
+       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("MediumspaceBetweenPipes"));
+       this.sizeOfHole = Integer.parseInt(properties.getProperty("MediumsizeOfHole"));
+       this.speedOfPipes = Integer.parseInt(properties.getProperty("MediumspeedOfPipes"));
+    }
+
+    private void setLevelHard(Properties properties) {
+       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("HardspaceBetweenPipes"));
+       this.sizeOfHole = Integer.parseInt(properties.getProperty("HardsizeOfHole"));
+       this.speedOfPipes = Integer.parseInt(properties.getProperty("HardspeedOfPipes"));
     }
 }
