@@ -3,7 +3,10 @@ package ui;
 
 
 import domain.Game;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -104,7 +107,12 @@ public class Render extends Application {
                 label.setText("Nickname has to be between 3 and 8 characters");
             } else {
                 RadioButton rb = (RadioButton)levelGroup.getSelectedToggle();
-                gameMotor.setLevel(rb.getText());
+                try {
+                    gameMotor.setLevel(rb.getText());
+                } catch (IOException ex) {
+                    // no worries the game just plays with easy difficulty
+                    Logger.getLogger(Render.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 gameMotor.setUsername(nicknameTextfield.getText()); 
                 gameWindow.setScene(theGameScene); // this changes the game scene on
             }

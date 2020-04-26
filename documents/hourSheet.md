@@ -43,4 +43,5 @@
 | 21.4. | 1 | Arkkitehtuuridokumentaation tarkentaminen |
 | 23.4. | 0.5 | Onnittelu pop-up uudesta highscoresta |
 | 23.4. | 1 | Eri vaikeusasteet |
-| yht   | 47.5 | | 
+| 26.4. | 0.5 | Code Reviewssä mainittujen bugien korjaus (hyvät kommentit, olin epähuomissa jättänyt pari hölmöä bugia) |
+| yht   | 48 | | 
