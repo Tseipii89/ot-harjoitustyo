@@ -18,7 +18,7 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 
 [Versio 2.0](https://github.com/Tseipii89/ot-harjoitustyo/releases/tag/Viikko6)
 
-You can run the JAR -file with command "java -jar FlappyBird-<versio>.jar" after you have entered to the directory where ther JAR -file is located.
+You can run the JAR -file with command "java -jar FlappyBird-(versio).jar" after you have entered to the directory where ther JAR -file is located.
 
 ### Javadoc ###
 
