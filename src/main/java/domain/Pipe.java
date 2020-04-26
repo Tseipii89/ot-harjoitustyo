@@ -210,13 +210,18 @@ public class Pipe implements Sprite {
     /**
      *
      * Renders the Pipe to the GraphicContext given.
+     * The null pointer exception is for testing purposes.
      * 
      * @param gc GraphicContext to be rendered to
      */
     @Override
     public void render(GraphicsContext gc) {
-        gc.setFill(COLOR);
-        gc.fillRect(this.positionX, this.positionY, this.width, this.height);
+        try {
+            gc.setFill(COLOR);
+            gc.fillRect(this.positionX, this.positionY, this.width, this.height); 
+        } catch (NullPointerException e) { 
+            System.out.print("NullPointerException Caught"); 
+        } 
     }
 
     /**

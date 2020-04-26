@@ -4,6 +4,7 @@ package domain;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 /**
  * Class implements Sprite interface.
@@ -15,7 +16,7 @@ import javafx.scene.image.Image;
 public class Bird implements Sprite {
 
 
-    private final Image flappyBirdImg;
+    private Image flappyBirdImg;
 
     private int positionX;
 
@@ -40,29 +41,24 @@ public class Bird implements Sprite {
      * @param width the width of the game screen
      */
     public Bird(Image img, int height, int width) {
-        this.flappyBirdImg = img;
-        this.positionX = width / 2 - 200;
-        this.positionY = height / 2 - 15;
-        this.motionY = 0;
-        this.width = img.getWidth();
-        this.width = img.getHeight();
+        try {
+            this.flappyBirdImg = img;
+            this.positionX = width / 2 - 200;
+            this.positionY = height / 2 - 15;
+            this.motionY = 0;
+            this.width = img.getWidth();
+            this.width = img.getHeight();
+        } catch (NullPointerException e) { 
+            this.flappyBirdImg = null;
+            this.positionX = width / 2 - 200;
+            this.positionY = height / 2 - 15;
+            this.motionY = 0;
+            this.width = 20;
+            this.width = 20;
+        }
+
     }
     
-    /**
-     *
-     * This constructor is supposed to be only used for the testing.
-     * 
-     * @param height the height of the game screen
-     * @param width the width of the game screen
-     */
-    public Bird(int height, int width) {
-        this.flappyBirdImg = null;
-        this.positionX = width / 2 - 200;
-        this.positionY = height / 2 - 15;
-        this.motionY = 0;
-        this.width = 20;
-        this.width = 20;
-    }
     
     /**
      *
@@ -176,7 +172,13 @@ public class Bird implements Sprite {
      */
     @Override
     public void render(GraphicsContext gc) {
-        gc.drawImage(flappyBirdImg, this.positionX, this.positionY);
+        if (flappyBirdImg != null) {
+            gc.drawImage(flappyBirdImg, this.positionX, this.positionY);
+        } else {
+            gc.setFill(Color.RED);
+            gc.fillRect(this.positionX, this.positionY, this.width, this.height);
+        }
+
     }
 
     /**

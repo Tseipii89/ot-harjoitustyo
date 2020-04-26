@@ -14,11 +14,38 @@ import javafx.scene.canvas.GraphicsContext;
 public interface Sprite {
     
     
+    /**
+    *
+    * Method returns the x -position of the Sprite.
+    * 
+    * @return Integer x -position of the Sprite
+    */
     public int getPositionX();
+    
+    /**
+    *
+    * Method sets the x -position of the Sprite.
+    * 
+    * @param positionX Integer sets the Sprite x -position
+    */
     
     public void setPositionX(int positionX);
     
+    /**
+    *
+    * Method returns the y -position of the Sprite.
+    * 
+    * @return Integer y -position of the Sprite
+    */
+    
     public int getPositionY();
+    
+    /**
+    *
+    * Method sets the y -position of the Sprite.
+    * 
+    * @param positionY Integer sets the Sprite y -position
+    */
     
     public void setPositionY(int positionY);
 

@@ -26,7 +26,7 @@ public class BirdTest {
     
     @Before
     public void setUp() {
-        testBirdie = new Bird(600, 800);
+        testBirdie = new Bird(null,600, 800);
     }
     
     @After

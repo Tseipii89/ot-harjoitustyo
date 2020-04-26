@@ -178,6 +178,10 @@ public final class Game {
         return this.newHighscore;
     }
     
+    public void setScore(int newScore) {
+        this.score = newScore;
+    }
+    
     /**
     *
     * Returns the object that knows the name of the highscore player.
@@ -209,6 +213,74 @@ public final class Game {
         this.pipes.add(pipeToAdd);
       
     }
+    
+    /**
+    *
+    * Sets the space between Pipes. 
+    * Used with the level setting and testing.
+    * 
+    * @param spaceBetweenPipes the space between two consecutive Pipes
+    */
+    public void setSpaceBetweenPipes(int spaceBetweenPipes) {
+        this.spaceBetweenPipes = spaceBetweenPipes; 
+    }
+    
+    /**
+    *
+    * Returns the space between Pipes. 
+    * Used with the level setting and testing.
+    * 
+     * @return the space between two consecutive Pipes
+    */
+    public int getSpaceBetweenPipes() {
+        return this.spaceBetweenPipes; 
+    }
+    
+    /**
+    *
+    * Sets the hole height of the Pipe. 
+    * Used with the level setting and testing.
+    * 
+    * @param sizeOfHole the hole between top and bottom Pipe
+    */
+    public void setHolesInPipes(int sizeOfHole) {
+        this.sizeOfHole = sizeOfHole; 
+    }
+    
+    /**
+    *
+    * Returns the hole height of the Pipe. 
+    * Used with the level testing.
+    * 
+     * @return the hole between top and bottom Pipe
+    */
+    public int getHolesInPipes() {
+        return this.sizeOfHole; 
+    }
+    
+    /**
+    *
+    * Sets the speed of the Pipe. 
+    * Used with the level setting and testing.
+    * 
+    * @param speedOfPipes the speed of how fast the Pipes move
+    */
+    public void setPipeSpeed(int speedOfPipes) {
+        this.speedOfPipes = speedOfPipes; 
+    }
+    
+    /**
+    *
+    * Returns the speed of the Pipe.
+    * Used with the level testing.
+    * 
+    * @return the speed of how fast the Pipes move
+    */
+    public int getPipeSpeed() {
+        return this.speedOfPipes; 
+    }
+    
+    
     
     /**
      * In the beginning of the game four pipes are added to the Pipes arrayList. 
@@ -251,13 +323,10 @@ public final class Game {
      * Used by the birdJump method to check if the Bird can jump.
      * If bird is on the top of the screen it is not allowed to jump until it is under 15 y points under the top.
      * 
-     * @return true if bird can jump, false if bird has hit the bottom or top of the screen
+     * @return true if bird can jump, false if bird has hit top of the screen
      */
-    private boolean birdNotOutOfField() {
+    public boolean birdNotOutOfField() {
         Rectangle2D birdRect = this.gameBird.getBoundary();
-        if (birdRect.getMaxY() + 15 > Game.height) {
-            return false;
-        }
         return birdRect.getMinY() - 15 >= 0;
     }
 
@@ -365,8 +434,7 @@ public final class Game {
         for (Pipe pipe : this.pipes) {
             if (pipe.getPositionX() + pipe.getWidth() < this.gameBird.getPositionX()
                     && pipe.isScored() == false
-                    && pipe.isTopPipe() == true) // Every Pipe comes as a pair of top and bottom Pipe. Check if Pipe is top so that the pair is scored only once.
-            {
+                    && pipe.isTopPipe() == true) { // Every Pipe comes as a pair of top and bottom Pipe. Check if Pipe is top so that the pair is scored only once.
                 this.score++;
                 pipe.setScored(true);
             }
@@ -377,7 +445,20 @@ public final class Game {
             this.highscore.update(newChampion);
         } 
     }
-
+    
+     /**
+     * Sets the difficulty level of the game according to choice of the player.
+     * The difficulty of the game is chosen in the start screen.
+     * The difficulty settings are read from config.properties file, so that the settings can be easily changed.
+     * 
+     * @param levelText levelText is given from the radiobutton's label
+     * 
+     * @see ui.Render#starterScene(javafx.stage.Stage) 
+     * 
+     * @throws java.io.FileNotFoundException if the config.properties file is not found the game uses easy difficulty settings
+     * @throws IOException The missing file problem handling is explained above
+     */
+    
     public void setLevel(String levelText) throws FileNotFoundException, IOException {
         Properties properties = new Properties();
         properties.load(new FileInputStream("config.properties"));
@@ -395,20 +476,20 @@ public final class Game {
     }
 
     private void setLevelEasy(Properties properties) {
-       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("EasyspaceBetweenPipes"));
-       this.sizeOfHole = Integer.parseInt(properties.getProperty("EasysizeOfHole"));
-       this.speedOfPipes = Integer.parseInt(properties.getProperty("EasyspeedOfPipes"));
+        this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("EasyspaceBetweenPipes"));
+        this.sizeOfHole = Integer.parseInt(properties.getProperty("EasysizeOfHole"));
+        this.speedOfPipes = Integer.parseInt(properties.getProperty("EasyspeedOfPipes"));
     }
 
     private void setLevelMedium(Properties properties) {
-       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("MediumspaceBetweenPipes"));
-       this.sizeOfHole = Integer.parseInt(properties.getProperty("MediumsizeOfHole"));
-       this.speedOfPipes = Integer.parseInt(properties.getProperty("MediumspeedOfPipes"));
+        this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("MediumspaceBetweenPipes"));
+        this.sizeOfHole = Integer.parseInt(properties.getProperty("MediumsizeOfHole"));
+        this.speedOfPipes = Integer.parseInt(properties.getProperty("MediumspeedOfPipes"));
     }
 
     private void setLevelHard(Properties properties) {
-       this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("HardspaceBetweenPipes"));
-       this.sizeOfHole = Integer.parseInt(properties.getProperty("HardsizeOfHole"));
-       this.speedOfPipes = Integer.parseInt(properties.getProperty("HardspeedOfPipes"));
+        this.spaceBetweenPipes = Integer.parseInt(properties.getProperty("HardspaceBetweenPipes"));
+        this.sizeOfHole = Integer.parseInt(properties.getProperty("HardsizeOfHole"));
+        this.speedOfPipes = Integer.parseInt(properties.getProperty("HardspeedOfPipes"));
     }
 }
