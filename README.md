@@ -30,13 +30,15 @@ You can generate the jacoco report with command "mvn jacoco:report". You find th
 
 You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:checkstyle". You find this document under *target/site/checkstyle.html*
 
-## School project ##
+## Documents ##
 
 [Hours Sheet](/documents/hourSheet.md)
 
 [Requirements analysis](/documents/Requirements.md)
 
 [Architecture Definition](/documents/architectureDefinition.md)
+
+[User-manual](/documents/user-manual.md)
 
 
 
