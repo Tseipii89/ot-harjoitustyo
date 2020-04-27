@@ -8,9 +8,36 @@ FlappyBird is a game where you try to fly through pipes with a bouncing bird. Th
 
 ## How to start ##
 
-Do a normal clone of the git repo to your wanted folder (the command is "git clone git@github.com:Tseipii89/ot-harjoitustyo.git").
+Two ways:
 
-Then use your terminal to navigate to the root of the just cloned program and run "mvn compile exec:java -Dexec.mainClass=main.Main"
+**First**
+
+Download the newest verion of the game from [Here](https://github.com/Tseipii89/ot-harjoitustyo/releases) and run it with the command 
+
+```
+java -jar FlappyBird-(version).jar
+```
+
+In this method the difficulty settings don't work.
+
+**Second**
+
+Do a normal clone of the git repo to your wanted folder 
+
+```
+git clone git@github.com:Tseipii89/ot-harjoitustyo.git
+```
+
+
+Then use your terminal to navigate to the root of the just cloned program and run
+
+```
+mvn compile exec:java -Dexec.mainClass=main.Main
+```
+
+(requires that maven is installed).
+
+In this version the difficulty settings work.
 
 ## Releases ##
 
@@ -20,15 +47,48 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 
 You can run the JAR -file with command "java -jar FlappyBird-(versio).jar" after you have entered to the directory where ther JAR -file is located.
 
+
+## Generating JAR
+
+The JAR -files in the releases are done with windows machine. It means that they might not work with linux or mac machines. 
+
+If they don't work you can generate your own JAR -file from the source files with the command after cloning the files.
+
+```
+mvn package
+```
+
+Be sure to be in the root folder.
+
+This command generates the JAR into target folder. Run the version with the name Flappybird-1.0-SNAPSHOT.jar (the one without the original in the beginning of the name).
+
 ### Javadoc ###
 
-Javadoc can be created using command "mvn javadoc:javadoc". Javadoc can be found at *target/site/apidocs/index.html*
+Javadoc can be created using command 
+```
+mvn javadoc:javadoc
+```
+Javadoc can be found at *target/site/apidocs/index.html*
 
 ### Test and Style ###
 
-You can generate the jacoco report with command "mvn jacoco:report". You find this document under *target/site/jacoco/index.html* OR you can just run the rest with command "mvn test"
+You can generate the jacoco report with command 
+```
+mvn jacoco:report
+```
+You find this document under *target/site/jacoco/index.html* OR you can just run the rest with command 
+```
+mvn test
+```
+The jacoco report needs that you have run tests first.
 
-You can generate the checkstyle document with command "mvn jxr:jxr checkstyle:checkstyle". You find this document under *target/site/checkstyle.html*
+#### Checkstyle
+
+You can generate the checkstyle document with command 
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+You find this document under *target/site/checkstyle.html*
 
 ## Documents ##
 
