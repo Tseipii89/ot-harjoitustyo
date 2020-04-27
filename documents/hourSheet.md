@@ -46,5 +46,6 @@
 | 26.4. | 0.5 | Code Reviewssä mainittujen bugien korjaus (hyvät kommentit, olin epähuomissa jättänyt pari hölmöä bugia) |
 | 26.4. | 0.5 | Checkstyle virheiden korjaaminen |
 | 26.4. | 1.5 | Testien laajentaminen |
-| 26.4. | 2| Uuden version release |
-| yht   | 51.5 | | 
+| 26.4. | 2 | Uuden version release |
+| 27.4. | 0.5 | Käyttöohjeen kirjoittaminen |
+| yht   | 52 | | 
