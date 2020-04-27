@@ -84,7 +84,7 @@ mvn test
 ```
 The jacoco report needs that you have run tests first.
 
-#### Checkstyle
+### Checkstyle
 
 You can generate the checkstyle document with command 
 ```
