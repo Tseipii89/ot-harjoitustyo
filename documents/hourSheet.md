@@ -48,4 +48,5 @@
 | 26.4. | 1.5 | Testien laajentaminen |
 | 26.4. | 2 | Uuden version release |
 | 27.4. | 0.5 | Käyttöohjeen kirjoittaminen |
+| 27.4. | 0.5 | README:n siistiminen |
 | yht   | 52 | | 
