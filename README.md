@@ -48,7 +48,9 @@ In this version the difficulty settings work.
 You can run the JAR -file with command "java -jar FlappyBird-(versio).jar" after you have entered to the directory where ther JAR -file is located.
 
 
-## Generating JAR
+## Terminal commands
+
+### Generating JAR
 
 The JAR -files in the releases are done with windows machine. It means that they might not work with linux or mac machines. 
 
