@@ -20,7 +20,7 @@ java -jar FlappyBird-(version).jar
 
 In this method the difficulty settings don't work.
 
-**Second**
+**Second (requires that maven is installed)**
 
 Do a normal clone of the git repo to your wanted folder 
 
@@ -34,8 +34,6 @@ Then use your terminal to navigate to the root of the just cloned program and ru
 ```
 mvn compile exec:java -Dexec.mainClass=main.Main
 ```
-
-(requires that maven is installed).
 
 In this version the difficulty settings work.
 
