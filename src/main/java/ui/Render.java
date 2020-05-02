@@ -16,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -40,8 +39,12 @@ public class Render extends Application {
     private final ArrayList<String> input;
     private static Game gameMotor;
     public static Image background;
-    public Scene theGameScene;
+    private Scene startScene;
+    private Scene theGameScene;
     public Canvas gameCanvas;
+    Button startGameButton;
+    private final ToggleGroup levelGroup;
+    private HBox levelSelection;
     private final Font h1Font =  Font.font( "Times New Roman", FontWeight.BOLD, 48 );
     private final Font h2Font =  Font.font( "Times New Roman", FontWeight.BOLD, 24 );
     
@@ -50,20 +53,24 @@ public class Render extends Application {
         this.input = new ArrayList<>();
         Render.gameMotor = gameMotor;
         Render.background = new Image( "/images/flappybirdtausta.png" );
+        levelGroup = new ToggleGroup();
+        theGameScene = new Scene(root);
+        this.getLevels();
+        gameCanvas = new Canvas(gameMotor.getWidth(), gameMotor.getHeight());
+        root.getChildren().add(gameCanvas);
+        this.graphicsContext = gameCanvas.getGraphicsContext2D();
     }
 
     @Override
     public void start(Stage gameWindow)  {
         gameWindow.setTitle("Flappy Bird- flapity flap: UP-arrow to bounce the birdie!");
         this.starterScene(gameWindow); // Game inits with the startscene where the user is asked to give nickname input
-        this.initGameScene(); 
-        gameWindow.show();
-        this.newWaitForUpArrowScreen(gameWindow);
     }
     
     private void starterScene(Stage gameWindow) {
-        Scene startScene = new Scene(this.setStarterUIElementsPositions(gameWindow), gameMotor.getWidth(), gameMotor.getHeight());
+        startScene = new Scene(this.setStarterUIElementsPositions(gameWindow), gameMotor.getWidth(), gameMotor.getHeight());
         gameWindow.setScene(startScene);
+        gameWindow.show();
     }
     
     private BorderPane setStarterUIElementsPositions(Stage gameWindow) {
@@ -78,55 +85,71 @@ public class Render extends Application {
         Label label= new Label("Write your nickname to start");
         label.setTextFill( Color.RED );
         label.setFont(this.h2Font);
-        TextField nicknameTextfield = new TextField("Nickname has to be between 3 and 8 characters");
+        TextField nicknameTextfield = new TextField();
+        if(gameMotor.getUsername().isEmpty()) {
+            nicknameTextfield.setText("Nickname has to be between 3 and 8 characters");
+        } else {
+            nicknameTextfield.setText(gameMotor.getUsername());
+        }
         nicknameTextfield.setMaxWidth(300); 
-        Button button1= new Button("Start the Game!");
+        startGameButton= new Button("Start the Game!");
 
-        
-        final ToggleGroup levelGroup = new ToggleGroup();
-
-        RadioButton rb1 = new RadioButton("Easy");
-        rb1.setToggleGroup(levelGroup);
-        rb1.setSelected(true);
-
-        RadioButton rb2 = new RadioButton("Medium");
-        rb2.setToggleGroup(levelGroup);
-
-        RadioButton rb3 = new RadioButton("Hard");
-        rb3.setToggleGroup(levelGroup);
-        
-        
         VBox middleSet = new VBox();
         middleSet.setSpacing(10);
-        middleSet.getChildren().addAll(label, nicknameTextfield, rb1, rb2, rb3, button1);
+        middleSet.getChildren().addAll(label, nicknameTextfield, levelSelection, startGameButton);
         middleSet.setAlignment(Pos.CENTER);
-        button1.setOnAction((ActionEvent e) -> { // listener to see if nickname is too short or long
+        
+        startGameButton.setOnAction((ActionEvent e) -> { // listener to see if nickname is too short or long
             if (nicknameTextfield.getText().length() < 3 || 
                 nicknameTextfield.getText().length() > 8) 
             {
                 label.setText("Nickname has to be between 3 and 8 characters");
             } else {
-                RadioButton rb = (RadioButton)levelGroup.getSelectedToggle();
-                try {
-                    gameMotor.setLevel(rb.getText());
-                } catch (IOException ex) {
-                    // no worries the game just plays with easy difficulty
-                    Logger.getLogger(Render.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                this.setLevel();
                 gameMotor.setUsername(nicknameTextfield.getText()); 
+                initGameScene();
+                this.newWaitForUpArrowScreen(gameWindow);
                 gameWindow.setScene(theGameScene); // this changes the game scene on
+                gameWindow.show();
             }
         }); 
         return middleSet;
     }
     
-    private void initGameScene() {
-        theGameScene = new Scene(root);
-                       
-        gameCanvas = new Canvas(gameMotor.getWidth(), gameMotor.getHeight());
-        root.getChildren().add(gameCanvas);
+    private void getLevels() {
         
-        this.graphicsContext = gameCanvas.getGraphicsContext2D();
+        HBox levelButtons = new HBox();
+        
+        RadioButton rbEasy = new RadioButton("Easy");
+        rbEasy.setToggleGroup(levelGroup);
+        rbEasy.setSelected(true);
+
+        RadioButton rbMedium = new RadioButton("Medium");
+        rbMedium.setToggleGroup(levelGroup);
+
+        RadioButton rbHard = new RadioButton("Hard");
+        rbHard.setToggleGroup(levelGroup);
+        
+        levelButtons.setSpacing(10);
+        levelButtons.getChildren().addAll(rbEasy, rbMedium, rbHard);
+        levelButtons.setAlignment(Pos.CENTER);
+        
+        this.levelSelection = levelButtons;
+    }
+    
+    private void setLevel() {
+        RadioButton rb = (RadioButton)levelGroup.getSelectedToggle();
+        try {
+            gameMotor.setLevel(rb.getText());
+        } catch (IOException ex) {
+            // no worries the game just plays with easy difficulty
+            Logger.getLogger(Render.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void initGameScene() {
+
+
         graphicsContext.drawImage( Render.background, 0, 0 );
         theGameScene.setOnKeyPressed((KeyEvent e) -> {
             String code = e.getCode().toString();
@@ -156,28 +179,35 @@ public class Render extends Application {
             }
         }
         private void newGameRun(long currentNanoTime) {
-            if(gameMotor.getIsTheGameRunning()) {
-                int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
-                // updates the birds position on the screen
-                gameMotor.updateBirdPlacement(input, time);
-                // render the background again so there isn't any "shadows" for the bird
-                graphicsContext.drawImage( Render.background, 0, 0 );
-                gameMotor.drawPipes(graphicsContext, time);
-                gameMotor.getTheGameBird().render(graphicsContext);
-                gameMotor.checkIfGameOn();
-                gameMotor.updatePipes();
-                gameMotor.countScore();
-                this.setText();
-            } 
+
+            int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
+            // updates the birds position on the screen
+            gameMotor.updateBirdPlacement(input, time);
+            // render the background again so there isn't any "shadows" for the bird
+            graphicsContext.drawImage( Render.background, 0, 0 );
+            gameMotor.drawPipes(graphicsContext, time);
+            gameMotor.getTheGameBird().render(graphicsContext);
+            gameMotor.checkIfGameOn();
+            gameMotor.updatePipes();
+            gameMotor.countScore();
+            this.setText();
         }
         private void newStartScreen() {
-            if(!gameMotor.getIsTheGameRunning()) {
-                this.setText();
-                if(input.contains("UP")){
-                   gameMotor.reset();
-                   gameMotor.setTheGameRunning(true);
-                }
+
+            this.setText();
+            
+            if(input.contains("UP")){
+               gameMotor.reset();
+               gameMotor.setTheGameRunning(true);
             }
+            
+            if(input.contains("SPACE")){
+                
+               gameMotor.reset();
+               
+               gameWindow.setScene(startScene);
+            }
+
         }
         private void setText() {
             graphicsContext.setFill( Color.RED );
@@ -202,9 +232,13 @@ public class Render extends Application {
             graphicsContext.setLineWidth(2);
             graphicsContext.setFont( h1Font );
                 graphicsContext.fillText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 300 );
+                        + "pressing UP -arrow \n"
+                        + "Select new difficuylty or name by \n"
+                        + "pressing SPACE", 200, 300 );
                 graphicsContext.strokeText( "Start a new game by \n"
-                        + "pressing UP -arrow", 200, 300 );
+                        + "pressing UP -arrow \n"
+                        + "Select new difficuylty or name by \n"
+                        + "pressing SPACE", 200, 300 );
             }
             
         }
