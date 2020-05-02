@@ -65,6 +65,8 @@ public class Render extends Application {
     public void start(Stage gameWindow)  {
         gameWindow.setTitle("Flappy Bird- flapity flap: UP-arrow to bounce the birdie!");
         this.starterScene(gameWindow); // Game inits with the startscene where the user is asked to give nickname input
+        initGameScene();
+        this.newWaitForUpArrowScreen(gameWindow);
     }
     
     private void starterScene(Stage gameWindow) {
@@ -107,10 +109,10 @@ public class Render extends Application {
             } else {
                 this.setLevel();
                 gameMotor.setUsername(nicknameTextfield.getText()); 
-                initGameScene();
-                this.newWaitForUpArrowScreen(gameWindow);
                 gameWindow.setScene(theGameScene); // this changes the game scene on
                 gameWindow.show();
+                input.remove("SPACE");
+                input.add("START");
             }
         }); 
         return middleSet;
@@ -193,7 +195,6 @@ public class Render extends Application {
             this.setText();
         }
         private void newStartScreen() {
-
             this.setText();
             
             if(input.contains("UP")){
@@ -202,13 +203,15 @@ public class Render extends Application {
             }
             
             if(input.contains("SPACE")){
-                
-               gameMotor.reset();
-               
+               stop();
                gameWindow.setScene(startScene);
             }
-
+            
+            if(input.contains("START")){
+               start();
+            }
         }
+        
         private void setText() {
             graphicsContext.setFill( Color.RED );
             graphicsContext.setFont( h2Font );            

@@ -50,5 +50,5 @@
 | 27.4. | 0.5 | Käyttöohjeen kirjoittaminen |
 | 27.4. | 0.5 | README:n siistiminen |
 | 1.5. | 1 | Lopputarkistus palautusta varten |
-| 2.5. | 2 | Pelin loppumisen jälkeen voi valita vaikeusasteen uudestaan |
-| yht   | 55.5 | | 
+| 2.5. | 3.5 | Pelin loppumisen jälkeen voi valita vaikeusasteen uudestaan |
+| yht   | 57 | | 
