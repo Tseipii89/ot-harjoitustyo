@@ -17,7 +17,7 @@ public interface HighscoreDao<Highscore> {
      * 
      * @return highscore as an integer value
      */
-    Integer readHighscore();
+    Integer readHighscore(int level);
 
     /**
      *
@@ -25,7 +25,7 @@ public interface HighscoreDao<Highscore> {
      * 
      * @return abstract class highscore
      */
-    Highscore readNickname();
+    Highscore readNickname( int level);
     
 
     /**
@@ -35,6 +35,6 @@ public interface HighscoreDao<Highscore> {
      * @param object abstract object highscore
      * @return boolean value if the update succeeded or not
      */
-    boolean update(Highscore object);
+    boolean update(Highscore object, int level);
     
 }

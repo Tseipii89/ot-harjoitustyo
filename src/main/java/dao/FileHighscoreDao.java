@@ -21,7 +21,9 @@ public class FileHighscoreDao implements HighscoreDao {
     private File file;
 
  
-    private Nickname nickname;
+    private Nickname easyNickname;
+    private Nickname mediumNickname;
+    private Nickname hardNickname;
     
     /**
      *
@@ -41,16 +43,20 @@ public class FileHighscoreDao implements HighscoreDao {
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String[] parts = reader.nextLine().split(";");
-                this.nickname = new Nickname(parts[0], Integer.parseInt(parts[1]));
+                this.easyNickname = new Nickname(parts[0], Integer.parseInt(parts[1]));
+                this.mediumNickname = new Nickname(parts[2], Integer.parseInt(parts[3]));
+                this.hardNickname = new Nickname(parts[4], Integer.parseInt(parts[5]));
             }
         } catch (FileNotFoundException | NumberFormatException e) {
             FileWriter writer = new FileWriter(file);
-            writer.write("none;0"); 
+            writer.write("none;0;none;0;none;0"); 
             writer.close();
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String[] parts = reader.nextLine().split(";");
-                this.nickname = new Nickname(parts[0], Integer.parseInt(parts[1]));
+                this.easyNickname = new Nickname(parts[0], Integer.parseInt(parts[1]));
+                this.mediumNickname = new Nickname(parts[2], Integer.parseInt(parts[3]));
+                this.hardNickname = new Nickname(parts[4], Integer.parseInt(parts[5]));
             }
         }
     }
@@ -62,8 +68,15 @@ public class FileHighscoreDao implements HighscoreDao {
      * @return the integer value of highscore that is written in the file provided to this constructor
      */
     @Override
-    public Integer readHighscore() {
-        return this.nickname.getHighscore();
+    public Integer readHighscore(int level) {
+        switch (level) {
+            case 1:
+              return this.easyNickname.getHighscore();
+            case 2:
+              return this.mediumNickname.getHighscore();
+            default:
+              return this.hardNickname.getHighscore();
+        }  
     }
 
     /**
@@ -73,8 +86,15 @@ public class FileHighscoreDao implements HighscoreDao {
      * @return the string value of nickname that is written in the file provided to this constructor
      */
     @Override
-    public Object readNickname() {
-        return this.nickname.getName();
+    public Object readNickname(int level) {
+        switch (level) {
+            case 1:
+              return this.easyNickname.getName();
+            case 2:
+              return this.mediumNickname.getName();
+            default:
+              return this.hardNickname.getName();
+        }  
     }
     
     /**
@@ -89,14 +109,28 @@ public class FileHighscoreDao implements HighscoreDao {
      * @return true if update succeed or false if it didn't
      */
     @Override
-    public boolean update(Object object) {
-        this.nickname = (Nickname) object;
+    public boolean update(Object object, int level) {
+         switch (level) {
+            case 1:
+                this.easyNickname = (Nickname) object;
+                return this.writeUpdate(easyNickname);
+            case 2:
+                this.mediumNickname = (Nickname) object;
+                return this.writeUpdate(mediumNickname);
+            default:
+                this.hardNickname = (Nickname) object;
+                return this.writeUpdate(hardNickname);
+        }
+ 
+    }
+    
+    private boolean writeUpdate(Nickname nickname) {
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(nickname.getName() + ";" + Integer.toString(nickname.getHighscore())); 
             return true;
         } catch (IOException ex) {
             return false;
-        } 
+        }
     }
     
 }

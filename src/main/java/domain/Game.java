@@ -46,6 +46,8 @@ public final class Game {
     private String username;
 
     private HighscoreDao highscore; 
+    
+    private int level; 
        
     /**
      *
@@ -80,6 +82,7 @@ public final class Game {
         this.username = "";
         this.highscore = highscore;
         this.newHighscore = false;
+        this.level = 1;
     }
     
     
@@ -171,7 +174,7 @@ public final class Game {
     * @return the all time highscore
     */
     public int getHighscore() {
-        return this.highscore.readHighscore();
+        return this.highscore.readHighscore(this.level);
     }
     
     public boolean getNewhighscore() {
@@ -189,7 +192,7 @@ public final class Game {
     * @return the DAO object that is used to score the highscore information. Used in this context to get the nickname of the player.
     */
     public Object getAllTimePlayer() {
-        return this.highscore.readNickname();
+        return this.highscore.readNickname(this.level);
     }
     
     /**
@@ -439,10 +442,10 @@ public final class Game {
                 pipe.setScored(true);
             }
         }
-        if (this.score > this.highscore.readHighscore()) {
+        if (this.score > this.highscore.readHighscore(this.level)) {
             this.newHighscore = true;
             Nickname newChampion = new Nickname(this.username, this.score);
-            this.highscore.update(newChampion);
+            this.highscore.update(newChampion, this.level);
         } 
     }
     
@@ -465,12 +468,15 @@ public final class Game {
         switch (levelText) {
             case "Easy":
                 this.setLevelEasy(properties);
+                this.level = 1;
                 break;
             case "Medium":
                 this.setLevelMedium(properties);
+                this.level = 2;
                 break;
             default:
                 this.setLevelHard(properties);
+                this.level = 3;
                 break;
         }
     }

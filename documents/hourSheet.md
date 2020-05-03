@@ -51,4 +51,5 @@
 | 27.4. | 0.5 | README:n siistiminen |
 | 1.5. | 1 | Lopputarkistus palautusta varten |
 | 2.5. | 3.5 | Pelin loppumisen jälkeen voi valita vaikeusasteen uudestaan |
-| yht   | 57 | | 
+| 3.5. | 1 | Jokaisella tasolla omat highscoret |
+| yht   | 58 | | 

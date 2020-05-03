@@ -3,7 +3,7 @@ package domain;
 
 /**
  *
- * Class is used to score highscore and the name of highscore holder.
+ * Class is used to score easyHighscore and the name of easyHighscore holder.
  * Class is used by the DAO object.
  * @see dao.FileHighscoreDao
  * 
@@ -14,18 +14,18 @@ public class Nickname {
 
     private final String name;
 
-    private final int highscore;
+    private final int Highscore;
     
     /**
      *
-     * Sets the name and highscore for this specific Nickname object.
+     * Sets the name and easyHighscore for this specific Nickname object.
      * 
      * @param name username of the user with given score
      * @param score score this player got
      */
     public Nickname(String name, int score) {
         this.name = name;
-        this.highscore = score;
+        this.Highscore = score;
     }
     
     /**
@@ -40,12 +40,12 @@ public class Nickname {
     
     /**
      *
-     * Returns the highscore of the Nickname object.
+     * Returns the easyHighscore of the Nickname object.
      * 
-     * @return the highscore affiliated to this Nickname object
+     * @return the easyHighscore affiliated to this Nickname object
      */
     public int getHighscore() {
-        return this.highscore;
+        return this.Highscore;
     }
     
 }

@@ -109,10 +109,9 @@ public class Render extends Application {
             } else {
                 this.setLevel();
                 gameMotor.setUsername(nicknameTextfield.getText()); 
+                input.remove("SPACE");
                 gameWindow.setScene(theGameScene); // this changes the game scene on
                 gameWindow.show();
-                input.remove("SPACE");
-                input.add("START");
             }
         }); 
         return middleSet;
@@ -203,13 +202,9 @@ public class Render extends Application {
             }
             
             if(input.contains("SPACE")){
-               stop();
                gameWindow.setScene(startScene);
             }
-            
-            if(input.contains("START")){
-               start();
-            }
+
         }
         
         private void setText() {
