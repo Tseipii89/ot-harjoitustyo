@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -31,22 +32,28 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Render extends Application {
     private final Group root;
-    private GraphicsContext graphicsContext;
+    private final GraphicsContext graphicsContext;
     private final ArrayList<String> input;
     private static Game gameMotor;
     public static Image background;
     private Scene startScene;
-    private Scene theGameScene;
+    private final Scene highscoreScene; 
+    private final Scene theGameScene;
     public Canvas gameCanvas;
     Button startGameButton;
     private final ToggleGroup levelGroup;
     private HBox levelSelection;
-    private final Font h1Font =  Font.font( "Times New Roman", FontWeight.BOLD, 48 );
-    private final Font h2Font =  Font.font( "Times New Roman", FontWeight.BOLD, 24 );
+    private final VBox highscoreVBox;
+    private final Stage popup;
+    private final Font h1Font =  Font.font( "Times New Roman", FontWeight.BOLD, 42 );
+    private final Font h2Font =  Font.font( "Times New Roman", FontWeight.BOLD, 32 );
+    private final Font h3Font =  Font.font( "Times New Roman", FontWeight.BOLD, 24 );
     
     public Render(Game gameMotor) {
         this.root = new Group();
@@ -59,6 +66,10 @@ public class Render extends Application {
         gameCanvas = new Canvas(gameMotor.getWidth(), gameMotor.getHeight());
         root.getChildren().add(gameCanvas);
         this.graphicsContext = gameCanvas.getGraphicsContext2D();
+        highscoreVBox = new VBox();
+        highscoreScene = new Scene(highscoreVBox,300,200); 
+        popup  = new Stage();
+        this.initHighscorecene();
     }
 
     @Override
@@ -86,7 +97,7 @@ public class Render extends Application {
     private VBox getStarterUIElements(Stage gameWindow) {
         Label label= new Label("Write your nickname to start");
         label.setTextFill( Color.RED );
-        label.setFont(this.h2Font);
+        label.setFont(this.h3Font);
         TextField nicknameTextfield = new TextField();
         if(gameMotor.getUsername().isEmpty()) {
             nicknameTextfield.setText("Nickname has to be between 3 and 8 characters");
@@ -163,6 +174,25 @@ public class Render extends Application {
         });   
     }
     
+    private void initHighscorecene() {
+        Text newHighscoreText = new Text("You made a new highscore!!!");
+        Text whatALadText = new Text("What a lad!");
+
+        highscoreVBox.getChildren().addAll(newHighscoreText, whatALadText); 
+        highscoreVBox.setSpacing(10);
+        highscoreVBox.setStyle("-fx-padding: 10;" +
+        "-fx-border-style: solid inside;" +
+        "-fx-border-width: 2;" +
+        "-fx-border-insets: 5;" +
+        "-fx-border-radius: 5;" +
+        "-fx-border-color: blue;");  
+        
+        // configure UI for popup etc...
+        popup.setScene(highscoreScene);
+        // Set the title of the Stage
+        popup.setTitle("A new highscore!");
+    }
+    
     
     private void newWaitForUpArrowScreen(Stage gameWindow) {
         
@@ -209,20 +239,23 @@ public class Render extends Application {
         
         private void setText() {
             graphicsContext.setFill( Color.RED );
-            graphicsContext.setFont( h2Font );            
+            graphicsContext.setFont(h3Font );            
             graphicsContext.fillText( "Points: "+ gameMotor.getPoints(), 50, 50 );
             graphicsContext.fillText( "User: "+ gameMotor.getUsername(), 50, 20 );
             graphicsContext.fillText( "Highscore: "+ gameMotor.getHighscore(), gameMotor.getWidth()-200, 50 );
             graphicsContext.fillText( "User: "+ gameMotor.getAllTimePlayer(), gameMotor.getWidth()-200, 20 );
             
-            if(!gameMotor.getIsTheGameRunning() && gameMotor.getNewhighscore()) {
-            graphicsContext.setStroke( Color.BLACK );
-            graphicsContext.setLineWidth(2);
-            graphicsContext.setFont( h1Font );
-                graphicsContext.fillText( "You made a new highscore!!!\n" +
-                        "What a lad!", 100, 100 );
-                graphicsContext.strokeText( "You made a new highscore!!!\n" +
-                        "What a lad!", 100, 100 );
+            if(!gameMotor.getIsTheGameRunning() && gameMotor.getWasThisNewhighscore()) {
+                stop();
+                // Display the Stage
+                // hide popup after 3 seconds:
+                PauseTransition delay = new PauseTransition(Duration.seconds(3));
+                delay.setOnFinished((ActionEvent e) -> {
+                    popup.close(); start(); gameMotor.setWasThisNewhighscore(false);
+                });
+                popup.show();
+                delay.play(); 
+                
             }
             
             if(!gameMotor.getIsTheGameRunning()) {
@@ -232,11 +265,11 @@ public class Render extends Application {
                 graphicsContext.fillText( "Start a new game by \n"
                         + "pressing UP -arrow \n"
                         + "Select new difficuylty or name by \n"
-                        + "pressing SPACE", 200, 300 );
+                        + "pressing SPACE", 150, 200 );
                 graphicsContext.strokeText( "Start a new game by \n"
                         + "pressing UP -arrow \n"
                         + "Select new difficuylty or name by \n"
-                        + "pressing SPACE", 200, 300 );
+                        + "pressing SPACE", 150, 200 );
             }
             
         }

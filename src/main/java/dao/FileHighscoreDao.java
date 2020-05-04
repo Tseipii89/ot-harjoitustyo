@@ -126,7 +126,12 @@ public class FileHighscoreDao implements HighscoreDao {
     
     private boolean writeUpdate(Nickname nickname) {
         try (FileWriter writer = new FileWriter(file)) {
-            writer.write(nickname.getName() + ";" + Integer.toString(nickname.getHighscore())); 
+            writer.write(
+                    this.easyNickname.getName() + ";" + Integer.toString(this.easyNickname.getHighscore()) + ";"
+                    + this.mediumNickname.getName() + ";" + Integer.toString(this.mediumNickname.getHighscore()) + ";"
+                    + this.hardNickname.getName() + ";" + Integer.toString(this.hardNickname.getHighscore())
+                        
+            ); 
             return true;
         } catch (IOException ex) {
             return false;

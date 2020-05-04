@@ -52,4 +52,5 @@
 | 1.5. | 1 | Lopputarkistus palautusta varten |
 | 2.5. | 3.5 | Pelin loppumisen jälkeen voi valita vaikeusasteen uudestaan |
 | 3.5. | 1 | Jokaisella tasolla omat highscoret |
-| yht   | 58 | | 
+| 4.5. | 1.5 | Uusi highscore luo pop-up ikkunan (aikaisempi ilmoitus oli sotkuinen) |
+| yht   | 59.5 | | 

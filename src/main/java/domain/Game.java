@@ -177,8 +177,12 @@ public final class Game {
         return this.highscore.readHighscore(this.level);
     }
     
-    public boolean getNewhighscore() {
+    public boolean getWasThisNewhighscore() {
         return this.newHighscore;
+    }
+    
+    public void setWasThisNewhighscore(boolean setterValue) {
+        this.newHighscore = setterValue;
     }
     
     public void setScore(int newScore) {
