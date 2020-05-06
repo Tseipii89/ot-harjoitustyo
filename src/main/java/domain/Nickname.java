@@ -14,7 +14,7 @@ public class Nickname {
 
     private final String name;
 
-    private final int Highscore;
+    private final int highscore;
     
     /**
      *
@@ -25,7 +25,7 @@ public class Nickname {
      */
     public Nickname(String name, int score) {
         this.name = name;
-        this.Highscore = score;
+        this.highscore = score;
     }
     
     /**
@@ -45,7 +45,7 @@ public class Nickname {
      * @return the easyHighscore affiliated to this Nickname object
      */
     public int getHighscore() {
-        return this.Highscore;
+        return this.highscore;
     }
     
 }

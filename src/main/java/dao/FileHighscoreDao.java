@@ -71,11 +71,11 @@ public class FileHighscoreDao implements HighscoreDao {
     public Integer readHighscore(int level) {
         switch (level) {
             case 1:
-              return this.easyNickname.getHighscore();
+                return this.easyNickname.getHighscore();
             case 2:
-              return this.mediumNickname.getHighscore();
+                return this.mediumNickname.getHighscore();
             default:
-              return this.hardNickname.getHighscore();
+                return this.hardNickname.getHighscore();
         }  
     }
 
@@ -89,11 +89,11 @@ public class FileHighscoreDao implements HighscoreDao {
     public Object readNickname(int level) {
         switch (level) {
             case 1:
-              return this.easyNickname.getName();
+                return this.easyNickname.getName();
             case 2:
-              return this.mediumNickname.getName();
+                return this.mediumNickname.getName();
             default:
-              return this.hardNickname.getName();
+                return this.hardNickname.getName();
         }  
     }
     
@@ -110,7 +110,7 @@ public class FileHighscoreDao implements HighscoreDao {
      */
     @Override
     public boolean update(Object object, int level) {
-         switch (level) {
+        switch (level) {
             case 1:
                 this.easyNickname = (Nickname) object;
                 return this.writeUpdate(easyNickname);

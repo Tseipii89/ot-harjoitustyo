@@ -53,4 +53,6 @@
 | 2.5. | 3.5 | Pelin loppumisen jälkeen voi valita vaikeusasteen uudestaan |
 | 3.5. | 1 | Jokaisella tasolla omat highscoret |
 | 4.5. | 1.5 | Uusi highscore luo pop-up ikkunan (aikaisempi ilmoitus oli sotkuinen) |
-| yht   | 59.5 | | 
+| 6.5. | 0.5 | Checkstyle kuntoon |
+| 6.5. | 0.5 | Testit kuntoon|
+| yht   | 60.5 | | 

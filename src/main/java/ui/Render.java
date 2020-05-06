@@ -51,15 +51,14 @@ public class Render extends Application {
     private HBox levelSelection;
     private final VBox highscoreVBox;
     private final Stage popup;
-    private final Font h1Font =  Font.font( "Times New Roman", FontWeight.BOLD, 42 );
-    private final Font h2Font =  Font.font( "Times New Roman", FontWeight.BOLD, 32 );
-    private final Font h3Font =  Font.font( "Times New Roman", FontWeight.BOLD, 24 );
+    private final Font h1Font =  Font.font("Times New Roman", FontWeight.BOLD, 42);
+    private final Font h2Font =  Font.font("Times New Roman", FontWeight.BOLD, 24);
     
     public Render(Game gameMotor) {
         this.root = new Group();
         this.input = new ArrayList<>();
         Render.gameMotor = gameMotor;
-        Render.background = new Image( "/images/flappybirdtausta.png" );
+        Render.background = new Image("/images/flappybirdtausta.png");
         levelGroup = new ToggleGroup();
         theGameScene = new Scene(root);
         this.getLevels();
@@ -67,7 +66,7 @@ public class Render extends Application {
         root.getChildren().add(gameCanvas);
         this.graphicsContext = gameCanvas.getGraphicsContext2D();
         highscoreVBox = new VBox();
-        highscoreScene = new Scene(highscoreVBox,300,200); 
+        highscoreScene = new Scene(highscoreVBox, 300, 200); 
         popup  = new Stage();
         this.initHighscorecene();
     }
@@ -88,34 +87,35 @@ public class Render extends Application {
     
     private BorderPane setStarterUIElementsPositions(Stage gameWindow) {
         BorderPane startScreenLayout = new BorderPane();
-        startScreenLayout.setCenter(this.getStarterUIElements(gameWindow));
+        startScreenLayout.setCenter(this.setStarterUIElements(gameWindow));
         BackgroundImage startBackgroundImage = new BackgroundImage(Render.background, NO_REPEAT, NO_REPEAT, null, null);
         startScreenLayout.setBackground(new Background(startBackgroundImage));
         return startScreenLayout;
     }
     
-    private VBox getStarterUIElements(Stage gameWindow) {
-        Label label= new Label("Write your nickname to start");
-        label.setTextFill( Color.RED );
-        label.setFont(this.h3Font);
-        TextField nicknameTextfield = new TextField();
-        if(gameMotor.getUsername().isEmpty()) {
-            nicknameTextfield.setText("Nickname has to be between 3 and 8 characters");
-        } else {
-            nicknameTextfield.setText(gameMotor.getUsername());
-        }
-        nicknameTextfield.setMaxWidth(300); 
-        startGameButton= new Button("Start the Game!");
-
+    private VBox setStarterUIElements(Stage gameWindow) {
+        Label label = new Label("Write your nickname to start");
+        label.setTextFill(Color.RED);
+        label.setFont(this.h2Font);
+       
+        startGameButton = new Button("Start the Game!");
+        
+        TextField nicknameTextfield = this.getStarterTextfield();
+        
         VBox middleSet = new VBox();
         middleSet.setSpacing(10);
         middleSet.getChildren().addAll(label, nicknameTextfield, levelSelection, startGameButton);
         middleSet.setAlignment(Pos.CENTER);
         
+        this.setStarterButton(startGameButton, nicknameTextfield, gameWindow, label);
+        
+        return middleSet;
+    }
+    
+    private void setStarterButton(Button startGameButton, TextField nicknameTextfield, Stage gameWindow, Label label) {
         startGameButton.setOnAction((ActionEvent e) -> { // listener to see if nickname is too short or long
             if (nicknameTextfield.getText().length() < 3 || 
-                nicknameTextfield.getText().length() > 8) 
-            {
+                nicknameTextfield.getText().length() > 8) {
                 label.setText("Nickname has to be between 3 and 8 characters");
             } else {
                 this.setLevel();
@@ -125,8 +125,19 @@ public class Render extends Application {
                 gameWindow.show();
             }
         }); 
-        return middleSet;
     }
+    
+    private TextField getStarterTextfield() {
+        TextField nicknameTextfield = new TextField();
+        if (gameMotor.getUsername().isEmpty()) {
+            nicknameTextfield.setText("Nickname has to be between 3 and 8 characters");
+        } else {
+            nicknameTextfield.setText(gameMotor.getUsername());
+        }
+        nicknameTextfield.setMaxWidth(300); 
+        return nicknameTextfield;
+    }
+    
     
     private void getLevels() {
         
@@ -150,7 +161,7 @@ public class Render extends Application {
     }
     
     private void setLevel() {
-        RadioButton rb = (RadioButton)levelGroup.getSelectedToggle();
+        RadioButton rb = (RadioButton) levelGroup.getSelectedToggle();
         try {
             gameMotor.setLevel(rb.getText());
         } catch (IOException ex) {
@@ -162,15 +173,17 @@ public class Render extends Application {
     private void initGameScene() {
 
 
-        graphicsContext.drawImage( Render.background, 0, 0 );
+        graphicsContext.drawImage(Render.background, 0, 0);
         theGameScene.setOnKeyPressed((KeyEvent e) -> {
             String code = e.getCode().toString();
-            if ( !input.contains(code) ) // the key press should be added only once
-                input.add( code );
+            if (!input.contains(code)) {
+                // the key press should be added only once
+                input.add(code);
+            }
         });
         theGameScene.setOnKeyReleased((KeyEvent e) -> {
             String code = e.getCode().toString();
-            input.remove( code );
+            input.remove(code);
         });   
     }
     
@@ -181,11 +194,11 @@ public class Render extends Application {
         highscoreVBox.getChildren().addAll(newHighscoreText, whatALadText); 
         highscoreVBox.setSpacing(10);
         highscoreVBox.setStyle("-fx-padding: 10;" +
-        "-fx-border-style: solid inside;" +
-        "-fx-border-width: 2;" +
-        "-fx-border-insets: 5;" +
-        "-fx-border-radius: 5;" +
-        "-fx-border-color: blue;");  
+            "-fx-border-style: solid inside;" +
+            "-fx-border-width: 2;" +
+            "-fx-border-insets: 5;" +
+            "-fx-border-radius: 5;" +
+            "-fx-border-color: blue;");  
         
         // configure UI for popup etc...
         popup.setScene(highscoreScene);
@@ -200,79 +213,81 @@ public class Render extends Application {
         final long startNanoTime = System.nanoTime(); 
         new AnimationTimer()
         {
-        @Override
-        public void handle(long startNanoTime) {
-      
-            if(gameMotor.getIsTheGameRunning()){
-                this.newGameRun( startNanoTime);
-            } else {
-                this.newStartScreen(); // this is the screen shown to player if he/she hits any Pipes or bottom and the game stops
-            }
-        }
-        private void newGameRun(long currentNanoTime) {
+            @Override
+            public void handle(long startNanoTime) {
 
-            int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
-            // updates the birds position on the screen
-            gameMotor.updateBirdPlacement(input, time);
-            // render the background again so there isn't any "shadows" for the bird
-            graphicsContext.drawImage( Render.background, 0, 0 );
-            gameMotor.drawPipes(graphicsContext, time);
-            gameMotor.getTheGameBird().render(graphicsContext);
-            gameMotor.checkIfGameOn();
-            gameMotor.updatePipes();
-            gameMotor.countScore();
-            this.setText();
-        }
-        private void newStartScreen() {
-            this.setText();
-            
-            if(input.contains("UP")){
-               gameMotor.reset();
-               gameMotor.setTheGameRunning(true);
+                if (gameMotor.getIsTheGameRunning()) {
+                    this.newGameRun(startNanoTime);
+                } else {
+                    this.newStartScreen(); // this is the screen shown to player if he/she hits any Pipes or bottom and the game stops
+                }
             }
-            
-            if(input.contains("SPACE")){
-               gameWindow.setScene(startScene);
+            private void newGameRun(long currentNanoTime) {
+
+                int time = (int) ((currentNanoTime - startNanoTime) / 20000000); 
+                // updates the birds position on the screen
+                gameMotor.updateBirdPlacement(input, time);
+                // render the background again so there isn't any "shadows" for the bird
+                graphicsContext.drawImage(Render.background, 0, 0);
+                gameMotor.drawPipes(graphicsContext, time);
+                gameMotor.getTheGameBird().render(graphicsContext);
+                gameMotor.checkIfGameOn();
+                gameMotor.updatePipes();
+                gameMotor.countScore();
+                this.setText();
+            }
+            private void newStartScreen() {
+                this.setText();
+
+                if (input.contains("UP")) {
+                    gameMotor.reset();
+                    gameMotor.setTheGameRunning(true);
+                }
+
+                if (input.contains("SPACE")) {
+                    gameWindow.setScene(startScene);
+                }
+
             }
 
-        }
-        
-        private void setText() {
-            graphicsContext.setFill( Color.RED );
-            graphicsContext.setFont(h3Font );            
-            graphicsContext.fillText( "Points: "+ gameMotor.getPoints(), 50, 50 );
-            graphicsContext.fillText( "User: "+ gameMotor.getUsername(), 50, 20 );
-            graphicsContext.fillText( "Highscore: "+ gameMotor.getHighscore(), gameMotor.getWidth()-200, 50 );
-            graphicsContext.fillText( "User: "+ gameMotor.getAllTimePlayer(), gameMotor.getWidth()-200, 20 );
-            
-            if(!gameMotor.getIsTheGameRunning() && gameMotor.getWasThisNewhighscore()) {
-                stop();
-                // Display the Stage
-                // hide popup after 3 seconds:
-                PauseTransition delay = new PauseTransition(Duration.seconds(3));
-                delay.setOnFinished((ActionEvent e) -> {
-                    popup.close(); start(); gameMotor.setWasThisNewhighscore(false);
-                });
-                popup.show();
-                delay.play(); 
-                
+            private void setText() {
+                graphicsContext.setFill(Color.RED);
+                graphicsContext.setFont(h2Font);            
+                graphicsContext.fillText("Points: " + gameMotor.getPoints(), 50, 50);
+                graphicsContext.fillText("User: " + gameMotor.getUsername(), 50, 20);
+                graphicsContext.fillText("Highscore: " + gameMotor.getHighscore(), gameMotor.getWidth() - 200, 50);
+                graphicsContext.fillText("User: " + gameMotor.getAllTimePlayer(), gameMotor.getWidth() - 200, 20);
+
+                if (!gameMotor.getIsTheGameRunning() && gameMotor.getWasThisNewhighscore()) {
+                    stop();
+                    // Display the Stage
+                    // close popup after 3 seconds:
+                    PauseTransition delay = new PauseTransition(Duration.seconds(3));
+                    delay.setOnFinished((ActionEvent e) -> {
+                        popup.close(); 
+                        start(); 
+                        gameMotor.setWasThisNewhighscore(false);
+                    });
+                    popup.show();
+                    delay.play(); 
+
+                }
+
+                if (!gameMotor.getIsTheGameRunning()) {
+                    graphicsContext.setStroke(Color.BLACK);
+                    graphicsContext.setLineWidth(2);
+                    graphicsContext.setFont(h1Font);
+                    graphicsContext.fillText("Start a new game by \n"
+                            + "pressing UP -arrow \n"
+                            + "Select new difficuylty or name by \n"
+                            + "pressing SPACE", 150, 200);
+                    graphicsContext.strokeText("Start a new game by \n"
+                            + "pressing UP -arrow \n"
+                            + "Select new difficuylty or name by \n"
+                            + "pressing SPACE", 150, 200);
+                }
+
             }
-            
-            if(!gameMotor.getIsTheGameRunning()) {
-            graphicsContext.setStroke( Color.BLACK );
-            graphicsContext.setLineWidth(2);
-            graphicsContext.setFont( h1Font );
-                graphicsContext.fillText( "Start a new game by \n"
-                        + "pressing UP -arrow \n"
-                        + "Select new difficuylty or name by \n"
-                        + "pressing SPACE", 150, 200 );
-                graphicsContext.strokeText( "Start a new game by \n"
-                        + "pressing UP -arrow \n"
-                        + "Select new difficuylty or name by \n"
-                        + "pressing SPACE", 150, 200 );
-            }
-            
-        }
         }.start();
         gameWindow.show();
     }

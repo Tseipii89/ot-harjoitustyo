@@ -16,13 +16,17 @@ public class GameTest {
     
     private final Bird testBirdie;
     private final Game testGame;
-    private final Nickname testNickname;
+    private final Nickname easyTestNickname;
+    private final Nickname mediumTestNickname;
+    private final Nickname hardTestNickname;
     private final FakeHighscoreDAO testHighscoreDAO;
     
     public GameTest() throws FileNotFoundException {
         testBirdie = new Bird(null, 600, 800);
-        testNickname = new Nickname("Tester", 10);
-        testHighscoreDAO = new FakeHighscoreDAO(testNickname);
+        easyTestNickname = new Nickname("Easy", 10);
+        mediumTestNickname = new Nickname("Medium", 100);
+        hardTestNickname = new Nickname("Hard", 1000);
+        testHighscoreDAO = new FakeHighscoreDAO(easyTestNickname, mediumTestNickname, hardTestNickname);
         testGame = new Game(testBirdie, 600, 800, testHighscoreDAO);
     }
     

@@ -15,6 +15,7 @@ public interface HighscoreDao<Highscore> {
      *
      * Method returns the current highscore.
      * 
+     * @param level is the difficulty setting for the game. Each difficulty has it's own highscore and player.
      * @return highscore as an integer value
      */
     Integer readHighscore(int level);
@@ -23,9 +24,10 @@ public interface HighscoreDao<Highscore> {
      *
      * Method returns the nickname of the score keeper.
      * 
+     * @param level is the difficulty setting for the game. Each difficulty has it's own highscore and player.
      * @return abstract class highscore
      */
-    Highscore readNickname( int level);
+    Highscore readNickname(int level);
     
 
     /**
@@ -33,6 +35,7 @@ public interface HighscoreDao<Highscore> {
      * update highscore and the highscore holder.
      * 
      * @param object abstract object highscore
+     * @param level is the difficulty setting for the game. Each difficulty has it's own highscore and player.
      * @return boolean value if the update succeeded or not
      */
     boolean update(Highscore object, int level);

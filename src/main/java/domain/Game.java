@@ -20,33 +20,19 @@ public final class Game {
 
  
     private static int height;
-
     private static int width;
-
     private final Bird gameBird;
-
     private boolean isRunning;
-
     private final ArrayList<Pipe> pipes;
-
     private int spaceBetweenPipes;
-
-    private int widthOfPipe;
-    
+    private final int widthOfPipe;
     private int sizeOfHole;
-    
     private int speedOfPipes;
-    
-    private int howManyPipesBeginning;
-
+    private final int howManyPipesBeginning;
     private int score;
-    
     private boolean newHighscore;
-
     private String username;
-
-    private HighscoreDao highscore; 
-    
+    private final HighscoreDao highscore; 
     private int level; 
        
     /**
