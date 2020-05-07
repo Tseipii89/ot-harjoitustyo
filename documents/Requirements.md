@@ -23,12 +23,13 @@ Players enter the username to log in to the game. This nickname is only used to 
    - The bird can't jump over the top edge of the screen
 - The score will get higher the longer distance the user gets to
    - The screen will congratulations text if user makes new high score
+   - Every difficulty level has it's own highscore and nickname displayed
 - The screen will also show the highest score and username of the player who got it
 - There are moving obstacles with little holes that the player needs to get past
    - The moving obstacles continue to come as long as the game is on
 - If user hits wall, game over text will appear and the score doesn't increase anymore
-   - User can start new game by pressing up-arrow.
-   - Same nickname persists.
+   - User can start new game by pressing up-arrow. Then the same nickname and difficulty level persists.
+   - User can hit space and select new nickname and/or difficulty level
 - If user hits the bottom of the screen the game ends
 
 ## Further development ideas
