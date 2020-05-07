@@ -55,4 +55,5 @@
 | 4.5. | 1.5 | Uusi highscore luo pop-up ikkunan (aikaisempi ilmoitus oli sotkuinen) |
 | 6.5. | 0.5 | Checkstyle kuntoon |
 | 6.5. | 0.5 | Testit kuntoon|
-| yht   | 60.5 | | 
+| 7.5. | 1.5 | Testidokumentin kirjoittaminen ja pientä viilailua repositoriossa |
+| yht   | 62 | | 
