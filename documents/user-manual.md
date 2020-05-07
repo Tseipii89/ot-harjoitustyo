@@ -39,8 +39,8 @@ After successful login, you'll be shown the next screen. The game starts after y
 
 As you can see your current nickname is shown on the top left and the alltime highscorer is shown on the right top corner. The related scores are also shown.
 
-![Login screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameStart.JPG)
+![Gamestart screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameStart.JPG)
 
 After the pressing of UP -arrow the game starts. You bounce the bird with UP -arrow and try to get past the holes in the pipes. Each hole you pass gives you 1 point.
 
-![Login screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameOn.JPG)
+![GameOn screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameOn.JPG)
