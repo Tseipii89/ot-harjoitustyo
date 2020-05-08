@@ -38,3 +38,4 @@ Possbile improvements if time permits:
 
 - Users can create an username and password to signin/login into the system
 - Maybe some sound effects?
+- Adding database to the game, now it uses file to save the highscore player info. Database adds the possibilty to show each players highscore for each level as well as all time highscore.
