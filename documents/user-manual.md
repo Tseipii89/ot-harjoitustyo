@@ -29,7 +29,7 @@ Unfortunately I couldn't get the config.properties file to work with the JAR -fi
 
 ## Login
 
-In the login screen the player writes his nickname, that he/she wishes to use. The nickname needs to be between 3 and 8 characters. If the player hits a new highscore this nickname will be saved with the info about the highscore. Multiple players can have same nickname.
+In the login screen the player writes his nickname, that he/she wishes to use. The nickname needs to be between 3 and 8 characters. If the player hits a new highscore this nickname will be saved with the info about the highscore. Multiple players can have same nickname. **DO NOT USE ";" IN YOUR NICKNAME!!!**
 
 Also if you installed the game using the cloning method, you can also choose the difficulty for the game.
 
@@ -46,5 +46,7 @@ The player can also back up to the login screen by clicking Spacebar.
 ![Gamestart screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameStart.JPG)
 
 After the pressing of UP -arrow the game starts. You bounce the bird with UP -arrow and try to get past the holes in the pipes. Each hole you pass gives you 1 point.
+
+Every level has it's own highscore and highscoreplayer.
 
 ![GameOn screen](https://github.com/Tseipii89/ot-harjoitustyo/blob/master/documents/images/flappy-gameOn.JPG)
