@@ -2,7 +2,7 @@
 
 ## To start
 
-Download the newest verion of the game from [Here](https://github.com/Tseipii89/ot-harjoitustyo/releases) (at the time of writing V2.0)
+Download the newest verion of the game from [Here](https://github.com/Tseipii89/ot-harjoitustyo/releases) (at the time of writing V3.0)
 
 **NB** With some computers there has been reported issues where the bird drops quickly to bottom or jumps straight through the roof. I haven't been able to replicate this myself. If you find this issue and have a solution, please add a issue note for me.
 
