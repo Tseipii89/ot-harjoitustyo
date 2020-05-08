@@ -56,4 +56,5 @@
 | 6.5. | 0.5 | Checkstyle kuntoon |
 | 6.5. | 0.5 | Testit kuntoon|
 | 7.5. | 1.5 | Testidokumentin kirjoittaminen ja pientä viilailua repositoriossa |
-| yht   | 62 | | 
+| 8.5. | 1 | Viimeistely |
+| yht   | 63 | | 
